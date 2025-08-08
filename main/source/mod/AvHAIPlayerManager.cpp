@@ -4,6 +4,7 @@
 #include "AvHAITactical.h"
 #include "AvHAINavigation.h"
 #include "AvHAIConfig.h"
+#include "AvHAIMarineBuildOrder.h"
 #include "AvHAIWeaponHelper.h"
 #include "AvHAIHelper.h"
 #include "AvHAICommander.h"
@@ -1053,6 +1054,8 @@ void AIMGR_NewMap()
 
 	CONFIG_ParseConfigFile();
 	CONFIG_PopulateBotNames();
+	AIBO_ParseMarineBuildOrder();
+	AIBO_SelectBuildOrderRandomly();
 }
 
 bool AIMGR_IsNavmeshLoaded()
@@ -1417,6 +1420,10 @@ void AIMGR_OnBotEnabled()
 
 	CONFIG_ParseConfigFile();
 	CONFIG_PopulateBotNames();
+	if (!AIBO_CurrentBuildOrder)
+	{
+		AIBO_SelectBuildOrderRandomly();
+	}
 
 	AITAC_ClearMapAIData(true);
 
@@ -1468,6 +1475,7 @@ void AIMGR_OnBotDisabled()
 		UnloadNavigationData();
 	}
 
+	AIBO_ResetMarineBuildOrder();
 	bBotsEnabled = false;
 }
 

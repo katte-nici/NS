@@ -61,7 +61,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Server - Debug|Win32'">$(SolutionDir)\Debug\Server\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Server - Debug|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Server - Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Server - Playtest|Win32'">.\Playtest\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Server - Playtest|Win32'">$(SolutionDir)\Playtest\Server\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Server - Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Server - Playtest|Win32'">$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Server - Release|Win32'">$(Configuration)\</IntDir>
@@ -251,6 +251,7 @@
     <ClCompile Include="..\mod\AvHAICommander.cpp" />
     <ClCompile Include="..\mod\AvHAIConfig.cpp" />
     <ClCompile Include="..\mod\AvHAIHelper.cpp" />
+    <ClCompile Include="..\mod\AvHAIMarineBuildOrder.cpp" />
     <ClCompile Include="..\mod\AvHAIMath.cpp" />
     <ClCompile Include="..\mod\AvHAINavigation.cpp" />
     <ClCompile Include="..\mod\AvHAIPlayer.cpp" />
@@ -1386,6 +1387,7 @@
     <ClInclude Include="..\mod\AvHAIConfig.h" />
     <ClInclude Include="..\mod\AvHAIConstants.h" />
     <ClInclude Include="..\mod\AvHAIHelper.h" />
+    <ClInclude Include="..\mod\AvHAIMarineBuildOrder.h" />
     <ClInclude Include="..\mod\AvHAIMath.h" />
     <ClInclude Include="..\mod\AvHAINavigation.h" />
     <ClInclude Include="..\mod\AvHAIPlayer.h" />

@@ -62,7 +62,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Client - Playtest|Win32'">.\Playtest\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Client - Playtest|Win32'">$(SolutionDir)\Playtest\Client\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Client - Release|Win32'">.\Release\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Client - Debug|Win32'">$(SolutionDir)\Debug\Client\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Client - Playtest|Win32'">$(Configuration)\</IntDir>

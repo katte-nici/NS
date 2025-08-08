@@ -1,0 +1,81 @@
+# Marine Build orders
+
+# The Bot Commander tries to build the main base according to the listed order.
+# At the start of a map a build order is selected randomly accounting for the weights.
+# A higher weight means the build order is more likely to be chosen.
+# The weights don't have to sum up to 1. E.g. "6" would be a valid weight.
+# "ResourceTower" means that the Bot Commander prioritizes getting Res-Towers before building anything further down the list.
+
+# You can modify these or create your own build orders.
+# Careful! It is possible to soft-lock the Bot Commander's build order. E.g. by putting the Armslab before Armoury.
+
+# In the future the build order may include more complex interdependencies of structures, upgrades and weapon/item drops.
+
+BuildOrderStart
+name=Balanced
+weight=0.3
+entry=InfantryPortal
+entry=Armoury
+entry=TurretFactory
+entry=Turrets
+entry=ResourceTower
+entry=Armslab
+entry=Observatory
+entry=Phasegate
+entry=AdvancedArmoury
+entry=Protolab
+BuildOrderEnd
+
+BuildOrderStart
+name=Aggressive
+weight=0.2
+entry=InfantryPortal
+entry=Armoury
+entry=ResourceTower
+entry=Armslab
+entry=Observatory
+entry=Phasegate
+entry=AdvancedArmoury
+entry=Protolab
+BuildOrderEnd
+
+BuildOrderStart
+name=Fast Phasegate
+weight=0.2
+entry=InfantryPortal
+entry=Armoury
+entry=ResourceTower
+entry=Observatory
+entry=Phasegate
+entry=Armslab
+entry=AdvancedArmoury
+entry=Protolab
+BuildOrderEnd
+
+BuildOrderStart
+name=Turtle
+weight=0.1
+entry=InfantryPortal
+entry=Armoury
+entry=TurretFactory
+entry=Turrets
+entry=ResourceTower
+entry=Observatory
+entry=Phasegate
+entry=Armslab
+entry=AdvancedArmoury
+entry=Protolab
+BuildOrderEnd
+
+BuildOrderStart
+name=Shotgun Rush
+weight=0.1
+entry=Armoury
+entry=ResourceTower
+entry=InfantryPortal
+entry=Observatory
+entry=Phasegate
+entry=Armslab
+entry=AdvancedArmoury
+entry=Protolab
+BuildOrderEnd

@@ -38,7 +38,6 @@ Global
 		{5AADD469-7488-4B34-A9FD-01CFAC5972FD}.Debug|Win32.ActiveCfg = Particles - Debug|Win32
 		{5AADD469-7488-4B34-A9FD-01CFAC5972FD}.Debug|Win32.Build.0 = Particles - Debug|Win32
 		{5AADD469-7488-4B34-A9FD-01CFAC5972FD}.Playtest|Win32.ActiveCfg = Particles - Release|Win32
-		{5AADD469-7488-4B34-A9FD-01CFAC5972FD}.Playtest|Win32.Build.0 = Particles - Release|Win32
 		{5AADD469-7488-4B34-A9FD-01CFAC5972FD}.Release|Win32.ActiveCfg = Particles - Release|Win32
 		{5AADD469-7488-4B34-A9FD-01CFAC5972FD}.Release|Win32.Build.0 = Particles - Release|Win32
 		{36E392B2-EA9F-43FE-9700-82DFE548C75D}.Debug|Win32.ActiveCfg = Detour - Debug|Win32

@@ -548,6 +548,9 @@
     <ClCompile Include="..\mod\AvHAISoundQueue.cpp">
       <Filter>mod\bots</Filter>
     </ClCompile>
+    <ClCompile Include="..\mod\AvHAIMarineBuildOrder.cpp">
+      <Filter>mod\bots</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h">
@@ -971,6 +974,9 @@
       <Filter>mod\bots</Filter>
     </ClInclude>
     <ClInclude Include="..\mod\AvHAISoundQueue.h">
+      <Filter>mod\bots</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mod\AvHAIMarineBuildOrder.h">
       <Filter>mod\bots</Filter>
     </ClInclude>
   </ItemGroup>

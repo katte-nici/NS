@@ -86,6 +86,7 @@ void AICOMM_UpdateMainBaseStatus(AvHAIPlayer* pBot, AvHAIMarineBase* Base);
 
 bool AICOMM_BuildOutBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
+bool AICOMM_BuildOutMainBaseWithBuildOrder(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutOutpost(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutSiege(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutGuardPost(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);

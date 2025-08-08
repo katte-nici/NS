@@ -9,6 +9,7 @@
 #include "AvHAIHelper.h"
 #include "AvHAIPlayerManager.h"
 #include "AvHAIConfig.h"
+#include "AvHAIMarineBuildOrder.h"
 
 #include "AvHSharedUtil.h"
 #include "AvHServerUtil.h"
@@ -3272,6 +3273,19 @@ void AICOMM_CommanderThink(AvHAIPlayer* pBot)
 		}
 	}
 
+	if (!CommanderHasAnnouncedBuildOrder)
+	{
+		CommanderHasAnnouncedBuildOrder = true;
+		if (AIBO_CurrentBuildOrder)
+		{
+			std::string BuildOrderMessage = "Guys today we're doing a nice " + AIBO_CurrentBuildOrder->BuildOrderName + " build!";
+			char BuildOrderMessageBuffer[256];
+			strncpy(BuildOrderMessageBuffer, BuildOrderMessage.c_str(), sizeof(BuildOrderMessageBuffer) - 1);
+			BuildOrderMessageBuffer[sizeof(BuildOrderMessageBuffer) - 1] = '\0';
+			BotSay(pBot, false, 0.5f, BuildOrderMessageBuffer);
+		}
+	}
+
 	// Thanks to EterniumDev (Alien) for the suggestion to have the commander jump out and build if nobody is around to help
 	if (AICOMM_ShouldCommanderLeaveChair(pBot))
 	{
@@ -4445,7 +4459,8 @@ bool AICOMM_BuildOutBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 		case MARINE_BASE_OUTPOST:
 			return AICOMM_BuildOutOutpost(pBot, BaseToBuildOut);
 		case MARINE_BASE_MAINBASE:
-			return AICOMM_BuildOutMainBase(pBot, BaseToBuildOut);
+			return AICOMM_BuildOutMainBaseWithBuildOrder(pBot, BaseToBuildOut);
+			// return AICOMM_BuildOutMainBase(pBot, BaseToBuildOut);
 		case MARINE_BASE_GUARDPOST:
 			return AICOMM_BuildOutGuardPost(pBot, BaseToBuildOut);
 		default:
@@ -4978,6 +4993,319 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 		return pBot->Player->GetResources() <= (BALANCE_VAR(kPrototypeLabCost) * 1.5f);
 	}
 
+	return false;
+}
+
+bool AICOMM_BuildOutMainBaseWithBuildOrder(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
+{
+	if (!BaseToBuildOut) { return false; }
+
+	AvHTeamNumber BotTeam = pBot->Player->GetTeam();
+
+	AvHAIBuildableStructure CommChair;
+	AvHAIBuildableStructure ArmsLab;
+	AvHAIBuildableStructure ProtoLab;
+	AvHAIBuildableStructure PhaseGate;
+	AvHAIBuildableStructure Armoury;
+	AvHAIBuildableStructure TurretFactory;
+	AvHAIBuildableStructure Observatory;
+	int NumInfPortals = 0;
+	int NumTurrets = 0;
+	int NumIncomplete = 0;
+
+	vector<Vector> TurretLocations;
+
+	int DesiredInfPortals = (int)ceilf((float)AIMGR_GetNumPlayersOnTeam(BotTeam) / 4.0f);
+
+	for (auto it = BaseToBuildOut->PlacedStructures.begin(); it != BaseToBuildOut->PlacedStructures.end(); it++)
+	{
+		AvHAIBuildableStructure StructureRef = AITAC_GetDeployableStructureByEntIndex(BaseToBuildOut->BaseTeam, *it);
+
+		if (!StructureRef.IsCompleted()) { NumIncomplete++; }
+
+		switch (StructureRef.StructureType)
+		{
+		case STRUCTURE_MARINE_COMMCHAIR:
+			CommChair = StructureRef;
+			break;
+		case STRUCTURE_MARINE_INFANTRYPORTAL:
+			NumInfPortals++;
+			break;
+		case STRUCTURE_MARINE_ARMSLAB:
+		{
+			// We do this in case we have more than one arms lab. This ensures we always pick
+			// the complete one (if it exists) and don't accidentally pick up an unfinished one
+			if (!ArmsLab.IsValid() || !ArmsLab.IsCompleted())
+			{
+				ArmsLab = StructureRef;
+			}
+		}
+		break;
+		case STRUCTURE_MARINE_PROTOTYPELAB:
+		{
+			if (!ProtoLab.IsValid() || !ProtoLab.IsCompleted())
+			{
+				ProtoLab = StructureRef;
+			}
+		}
+		break;
+		case STRUCTURE_MARINE_PHASEGATE:
+		{
+			if (!PhaseGate.IsValid() || !PhaseGate.IsCompleted())
+			{
+				PhaseGate = StructureRef;
+			}
+		}
+		break;
+		case STRUCTURE_MARINE_TURRETFACTORY:
+		{
+			if (!TurretFactory.IsValid() || !TurretFactory.IsCompleted())
+			{
+				TurretFactory = StructureRef;
+			}
+		}
+		break;
+		case STRUCTURE_MARINE_ADVTURRETFACTORY:
+			TurretFactory = StructureRef;
+			break;
+		case STRUCTURE_MARINE_ARMOURY:
+		{
+			if (!Armoury.IsValid() || !Armoury.IsCompleted())
+			{
+				Armoury = StructureRef;
+			}
+		}
+		break;
+		case STRUCTURE_MARINE_ADVARMOURY:
+			Armoury = StructureRef;
+			break;
+		case STRUCTURE_MARINE_OBSERVATORY:
+		{
+			if (!Observatory.IsValid() || !Observatory.IsCompleted())
+			{
+				Observatory = StructureRef;
+			}
+		}
+		break;
+		case STRUCTURE_MARINE_TURRET:
+			NumTurrets++;
+			TurretLocations.push_back(StructureRef.Location);
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (NumIncomplete > 0)
+	{
+		int NumBuilders = AITAC_GetNumPlayersOfTeamInArea(pBot->Player->GetTeam(), BaseToBuildOut->BaseLocation, UTIL_MetresToGoldSrcUnits(10.0f), false, nullptr, AVH_USER3_COMMANDER_PLAYER);
+
+		// Don't spam too many structures
+		if (NumIncomplete > NumBuilders) { return false; }
+	}
+
+	if (!CommChair.IsValid())
+	{
+		if (pBot->Player->GetResources() < BALANCE_VAR(kCommandStationCost)) { return true; }
+
+		Vector BuildLocation = AITAC_GetRandomBuildHintInLocation(STRUCTURE_MARINE_COMMCHAIR, BaseToBuildOut->BaseLocation, UTIL_MetresToGoldSrcUnits(20.0f));
+
+		if (!vIsZero(BuildLocation))
+		{
+			bool bSuccess = AICOMM_AddStructureToBase(pBot, STRUCTURE_MARINE_COMMCHAIR, BuildLocation, BaseToBuildOut);
+
+			if (bSuccess) { return true; }
+		}
+
+		int NumAttempts = 0;
+
+		while (NumAttempts < 5)
+		{
+			BuildLocation = UTIL_GetRandomPointOnNavmeshInRadiusIgnoreReachability(GetBaseNavProfile(STRUCTURE_BASE_NAV_PROFILE), BaseToBuildOut->BaseLocation, UTIL_MetresToGoldSrcUnits(5.0f));
+
+			if (!vIsZero(BuildLocation))
+			{
+				bool bSuccess = AICOMM_AddStructureToBase(pBot, STRUCTURE_MARINE_COMMCHAIR, BuildLocation, BaseToBuildOut);
+
+				if (bSuccess) { return true; }
+			}
+
+			BuildLocation = UTIL_GetRandomPointOnNavmeshInRadius(GetBaseNavProfile(ONOS_BASE_NAV_PROFILE), BaseToBuildOut->BaseLocation, UTIL_MetresToGoldSrcUnits(10.0f));
+
+			if (!vIsZero(BuildLocation))
+			{
+				bool bSuccess = AICOMM_AddStructureToBase(pBot, STRUCTURE_MARINE_COMMCHAIR, BuildLocation, BaseToBuildOut);
+
+				if (bSuccess) { return true; }
+			}
+
+			NumAttempts++;
+		}
+
+		return pBot->Player->GetResources() <= (BALANCE_VAR(kCommandStationCost) * 1.5f);
+
+	}
+
+	if (!CommChair.IsCompleted()) { return false; }
+
+	if (!AIBO_CurrentBuildOrder)
+	{
+		g_engfuncs.pfnServerPrint("AICOMM_BuildOutMainBaseWithBuildOrder: No current build order set.\n");
+		return false;
+	}
+
+	for (auto& NextBuildOrder : AIBO_CurrentBuildOrder->BuildOrder)
+	{
+		if (NextBuildOrder.StructureType == STRUCTURE_NONE) { continue; }
+
+		AvHAIBuildableStructure Structure;
+
+		switch (NextBuildOrder.StructureRequired)
+		{
+		case STRUCTURE_MARINE_COMMCHAIR:
+			Structure = CommChair;
+			break;
+		case STRUCTURE_MARINE_ARMSLAB:
+			Structure = ArmsLab;
+			break;
+		case STRUCTURE_MARINE_PROTOTYPELAB:
+			Structure = ProtoLab;
+			break;
+		case STRUCTURE_MARINE_PHASEGATE:
+			Structure = PhaseGate;
+			break;
+		case STRUCTURE_MARINE_ARMOURY:
+		case STRUCTURE_MARINE_ADVARMOURY:
+			Structure = Armoury;
+			break;
+		case STRUCTURE_MARINE_TURRETFACTORY:
+			Structure = TurretFactory;
+			break;
+		case STRUCTURE_MARINE_OBSERVATORY:
+			Structure = Observatory;
+			break;
+		default:
+			Structure = CommChair;
+			break;
+		}
+
+		if (!Structure.IsValid() || !Structure.IsCompleted()) { return false; } // TODO: Check not just the structures in the main base. E.g. an observatory could be anywhere on the map.
+		// g_engfuncs.pfnServerPrint("Reached middle of for auto.\n");
+		if (NextBuildOrder.StructureType == STRUCTURE_MARINE_RESTOWER)
+		{
+			if (AICOMM_ShouldCommanderPrioritiseNodes(pBot) && pBot->Player->GetResources() < 30) { return false; }
+			continue;
+		}
+
+		Structure = AvHAIBuildableStructure();
+		int StructureCost = 0;
+
+		switch (NextBuildOrder.StructureType)
+		{
+		case STRUCTURE_MARINE_COMMCHAIR:
+			Structure = CommChair;
+			StructureCost = BALANCE_VAR(kCommandStationCost);
+			break;
+		case STRUCTURE_MARINE_ARMSLAB:
+			Structure = ArmsLab;
+			StructureCost = BALANCE_VAR(kArmsLabCost);
+			break;
+		case STRUCTURE_MARINE_PROTOTYPELAB:
+			Structure = ProtoLab;
+			StructureCost = BALANCE_VAR(kPrototypeLabCost);
+			break;
+		case STRUCTURE_MARINE_PHASEGATE:
+			Structure = PhaseGate;
+			StructureCost = BALANCE_VAR(kPhaseGateCost);
+			break;
+		case STRUCTURE_MARINE_ARMOURY:
+			Structure = Armoury;
+			StructureCost = BALANCE_VAR(kArmoryCost);
+			break;
+		case STRUCTURE_MARINE_ADVARMOURY:
+			Structure = Armoury;
+			StructureCost = BALANCE_VAR(kArmoryUpgradeCost);	
+			break;
+		case STRUCTURE_MARINE_TURRETFACTORY:
+			Structure = TurretFactory;
+			StructureCost = BALANCE_VAR(kTurretFactoryCost);
+			break;
+		case STRUCTURE_MARINE_OBSERVATORY:
+			Structure = Observatory;
+			StructureCost = BALANCE_VAR(kObservatoryCost);
+			break;
+		case STRUCTURE_MARINE_INFANTRYPORTAL:
+			if (NumInfPortals >= DesiredInfPortals) { continue; }
+			StructureCost = BALANCE_VAR(kInfantryPortalCost);
+			break;
+		case STRUCTURE_MARINE_TURRET:
+			if (NumTurrets >= 5) { continue; }
+			StructureCost = BALANCE_VAR(kSentryCost);
+			break;
+		default:
+			break;
+		}
+
+		if (NextBuildOrder.StructureType == STRUCTURE_MARINE_ADVARMOURY && Armoury.StructureType == STRUCTURE_MARINE_ADVARMOURY) { continue; }
+		if (Structure.IsValid() && NextBuildOrder.StructureType != STRUCTURE_MARINE_ADVARMOURY) { continue; }
+		if (NextBuildOrder.StructureType == STRUCTURE_MARINE_INFANTRYPORTAL && NumInfPortals >= DesiredInfPortals) { continue; }
+		if (NextBuildOrder.StructureType == STRUCTURE_MARINE_TURRET && NumTurrets >= 5) { continue; }
+
+		if (pBot->Player->GetResources() < StructureCost) { return true; }
+
+		//char TestMsg[128];
+		//sprintf(TestMsg, "Trying to build %s\n", std::to_string(NextBuildOrder.StructureType).c_str());
+		//g_engfuncs.pfnServerPrint(TestMsg);
+
+		// Maybe upgrade the armoury to the advanced armoury
+		if (NextBuildOrder.StructureType == STRUCTURE_MARINE_ADVARMOURY)
+		{
+			if (Armoury.StructureType == STRUCTURE_MARINE_ADVARMOURY) { return false;  }
+			if (pBot->Player->GetResources() < BALANCE_VAR(kArmoryUpgradeCost)) { return true; }
+
+			bool bSuccess = AICOMM_UpgradeStructure(pBot, &Armoury);
+
+			if (bSuccess) { return true; }
+
+			return pBot->Player->GetResources() <= (BALANCE_VAR(kArmoryUpgradeCost) * 1.5f);
+		}
+
+		Vector BuildLocation = AITAC_GetRandomBuildHintInLocation(NextBuildOrder.StructureType, BaseToBuildOut->BaseLocation, UTIL_MetresToGoldSrcUnits(20.0f));
+
+		if (!vIsZero(BuildLocation))
+		{
+			bool bSuccess = AICOMM_AddStructureToBase(pBot, NextBuildOrder.StructureType, BuildLocation, BaseToBuildOut);
+
+			if (bSuccess) { return true; }
+		}
+
+		int NumAttempts = 0;
+
+		while (NumAttempts < 5)
+		{
+			BuildLocation = UTIL_GetRandomPointOnNavmeshInRadiusIgnoreReachability(GetBaseNavProfile(STRUCTURE_BASE_NAV_PROFILE), CommChair.Location, UTIL_MetresToGoldSrcUnits(10.0f));
+
+			if (!vIsZero(BuildLocation))
+			{
+				bool bSuccess = AICOMM_AddStructureToBase(pBot, NextBuildOrder.StructureType, BuildLocation, BaseToBuildOut);
+
+				if (bSuccess) { return true; }
+			}
+
+			BuildLocation = UTIL_GetRandomPointOnNavmeshInRadius(GetBaseNavProfile(ONOS_BASE_NAV_PROFILE), CommChair.Location, UTIL_MetresToGoldSrcUnits(10.0f));
+
+			if (!vIsZero(BuildLocation))
+			{
+				bool bSuccess = AICOMM_AddStructureToBase(pBot, NextBuildOrder.StructureType, BuildLocation, BaseToBuildOut);
+
+				if (bSuccess) { return true; }
+			}
+
+			NumAttempts++;
+		}
+
+		return pBot->Player->GetResources() <= (StructureCost * 1.5f);
+	}
 	return false;
 }
 
