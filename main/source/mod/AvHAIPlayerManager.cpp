@@ -4,7 +4,7 @@
 #include "AvHAITactical.h"
 #include "AvHAINavigation.h"
 #include "AvHAIConfig.h"
-#include "AvHAIMarineBuildOrder.h"
+#include "AvHAIMarineBuildOrderManager.h"
 #include "AvHAIWeaponHelper.h"
 #include "AvHAIHelper.h"
 #include "AvHAICommander.h"

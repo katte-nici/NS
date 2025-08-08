@@ -9,7 +9,7 @@
 #include "AvHAIHelper.h"
 #include "AvHAIPlayerManager.h"
 #include "AvHAIConfig.h"
-#include "AvHAIMarineBuildOrder.h"
+#include "AvHAIMarineBuildOrderManager.h"
 
 #include "AvHSharedUtil.h"
 #include "AvHServerUtil.h"
