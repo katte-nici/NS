@@ -9,10 +9,41 @@
 
 extern bool CommanderHasAnnouncedBuildOrder;
 
+typedef enum
+{
+	BUILD_ORDER_NONE,
+	BUILD_ORDER_STRUCTURE,
+	BUILD_ORDER_UPGRADE,
+} AvHAIBuildOrderType;
+
+typedef enum
+{
+	CONDITION_NONE,
+	STRUCTURE_EXISTS,
+	UPGRADE_EXISTS,
+	TIME_ELAPSED,
+} AvHAIBuildCondition;
+
+typedef enum
+{
+	OR,
+	AND,
+} AvHAILogicConnective;
+
 typedef struct _BUILD_ORDER_ENTRY
 {
-	AvHAIDeployableStructureType StructureType;
-	AvHAIDeployableStructureType StructureRequired;
+	AvHAIBuildOrderType          BuildOrderType;
+	AvHAIDeployableStructureType StructureToBuild;
+	AvHTechID                    UpgradeToResearch;
+	AvHAIBuildCondition          BuildConditionOne;
+	AvHAIDeployableStructureType StructureRequiredOne;
+	AvHTechID                    UpgradeRequiredOne;
+	AvHAILogicConnective         Connective;
+	AvHAIBuildCondition          BuildConditionTwo;
+	AvHAIDeployableStructureType StructureRequiredTwo;
+	AvHTechID                    UpgradeRequiredTwo;
+	int TimeLimitInSecondsOne = 0;
+	int TimeLimitInSecondsTwo = 0;
 } Build_order_entry;
 
 typedef struct _MARINE_BUILD_ORDER {
@@ -31,5 +62,8 @@ void AIBO_SelectBuildOrderRandomly();
 int AIBO_IntRandomRange(int MinValue, int MaxValue);
 float AIBO_FloatRandomRange(float MinValue, float MaxValue);
 AvHAIDeployableStructureType AIBO_MapStringToStructure(const std::string& StructureName);
+AvHAIBuildCondition AIBO_MapStringToBuildCondition(const std::string& ConditionName);
+AvHAIBuildOrderType AIBO_MapStringToBuildOrderType(const std::string& BuildOrderTypeName);
+AvHTechID AIBO_MapStringToTech(const std::string& TechName);
 
 #endif

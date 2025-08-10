@@ -1,0 +1,189 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Quat::x' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/quat.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/util/Quat.cpp"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Quat::{ctor}",
+                  "decoratedName": "??0Quat@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Quat::x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Quat::y' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/quat.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/util/Quat.cpp"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Quat::{ctor}",
+                  "decoratedName": "??0Quat@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Quat::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Quat::z' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/quat.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/util/Quat.cpp"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Quat::{ctor}",
+                  "decoratedName": "??0Quat@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Quat::z"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Quat::w' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/quat.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/util/Quat.cpp"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Quat::{ctor}",
+                  "decoratedName": "??0Quat@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Quat::w"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35213.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/quat.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "9f9faca8c63acd6b223760cea6c3f398a573438818367687a88b0d9044e24897"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/quat.h"
+          },
+          "hashes": {
+            "sha-256": "412936adb8182635faf4bbf503e8c34468769207ba9329cfdc8a78c9dc1a65a8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/mathlib.h"
+          },
+          "hashes": {
+            "sha-256": "f659eb82cb5069c69be2edb0b7b598a13d5777fb9e3cf607d1e8ba9e89f64360"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/vec_op.h"
+          },
+          "hashes": {
+            "sha-256": "7a4ebbec19e77308c452885d84e509f423197fb99d5d0fa94e12261ed38e13ed"
+          }
+        }
+      ]
+    }
+  ]
+}

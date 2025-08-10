@@ -1,0 +1,51 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35213.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/zasserttemplate.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "9e17a6fefcaae095f580c2daf2bde32e55d71d432bcc613e20e140ed13afd45c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/stacktrace.h"
+          },
+          "hashes": {
+            "sha-256": "a6c935d4170e9bc046bef9f235958db40f49f62ad901be918b620441e3af9bbd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/zassert.h"
+          },
+          "hashes": {
+            "sha-256": "0143fc698bacee744b952056dd307cb6c4835cfef777e2679b4666f3c791c28f"
+          }
+        }
+      ]
+    }
+  ]
+}

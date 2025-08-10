@@ -1,0 +1,2 @@
+C:\Users\katte\projects\NS\main\source\Release\Particles\PS Docs.htm
+C:\Users\katte\projects\NS\main\source\particles\Particles - Release\particles.vcxproj.AssemblyReference.cache

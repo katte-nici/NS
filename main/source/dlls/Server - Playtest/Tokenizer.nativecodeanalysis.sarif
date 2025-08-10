@@ -1,0 +1,59 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35213.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/tokenizer.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "bfc74d808a11f024bbfe973789fcbd8e13f121326cb3b21d5fd26ff459daf5b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/nowarnings.h"
+          },
+          "hashes": {
+            "sha-256": "1381632fbd811c43b4c79c36da5b439b84889b29975003f71a999ce76cb8ee7b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/tokenizer.h"
+          },
+          "hashes": {
+            "sha-256": "276b37a448f866528d823a9a51d634b2eb4240af2f68fb9415c325e700e0b367"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/stringvector.h"
+          },
+          "hashes": {
+            "sha-256": "42fcd231b85483247821df97057843f1b5f5f6520bf785a7f47dca9bf941db32"
+          }
+        }
+      ]
+    }
+  ]
+}

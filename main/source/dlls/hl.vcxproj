@@ -251,7 +251,7 @@
     <ClCompile Include="..\mod\AvHAICommander.cpp" />
     <ClCompile Include="..\mod\AvHAIConfig.cpp" />
     <ClCompile Include="..\mod\AvHAIHelper.cpp" />
-    <ClCompile Include="..\mod\AvHAIMarineBuildOrder.cpp" />
+    <ClCompile Include="..\mod\AvHAIMarineBuildOrderManager.cpp" />
     <ClCompile Include="..\mod\AvHAIMath.cpp" />
     <ClCompile Include="..\mod\AvHAINavigation.cpp" />
     <ClCompile Include="..\mod\AvHAIPlayer.cpp" />
@@ -1387,7 +1387,7 @@
     <ClInclude Include="..\mod\AvHAIConfig.h" />
     <ClInclude Include="..\mod\AvHAIConstants.h" />
     <ClInclude Include="..\mod\AvHAIHelper.h" />
-    <ClInclude Include="..\mod\AvHAIMarineBuildOrder.h" />
+    <ClInclude Include="..\mod\AvHAIMarineBuildOrderManager.h" />
     <ClInclude Include="..\mod\AvHAIMath.h" />
     <ClInclude Include="..\mod\AvHAINavigation.h" />
     <ClInclude Include="..\mod\AvHAIPlayer.h" />

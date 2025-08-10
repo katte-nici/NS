@@ -1,0 +1,3698 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Vector2D::x' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/common/vectorclasses.h"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Vector2D::{ctor}",
+                  "decoratedName": "??0Vector2D@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Vector2D::x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Vector2D::y' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/common/vectorclasses.h"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Vector2D::{ctor}",
+                  "decoratedName": "??0Vector2D@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Vector2D::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Vector::x' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/common/vectorclasses.h"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Vector::{ctor}",
+                  "decoratedName": "??0Vector@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Vector::x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Vector::y' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/common/vectorclasses.h"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Vector::{ctor}",
+                  "decoratedName": "??0Vector@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Vector::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Vector::z' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/common/vectorclasses.h"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Vector::{ctor}",
+                  "decoratedName": "??0Vector@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Vector::z"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::starttime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::starttime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::ideal_yaw' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::ideal_yaw"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::pitch_speed' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::pitch_speed"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::solid' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::solid"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::ltime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::ltime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::fixangle' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::fixangle"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::light_level' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::light_level"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::weaponmodel' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::weaponmodel"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::bInDuck' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::bInDuck"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::animtime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::animtime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::health' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::health"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::euser4' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::euser4"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::pain_finished' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::pain_finished"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::frame' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::frame"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::friction' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::friction"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::enemy' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::enemy"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::controller' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::controller"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::idealpitch' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::idealpitch"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::nextthink' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::nextthink"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::playerclass' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::playerclass"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::yaw_speed' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::yaw_speed"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::model' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::model"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::chain' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::chain"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::viewmodel' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::viewmodel"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::gravity' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::gravity"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::modelindex' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::modelindex"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::impulse' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::impulse"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::maxspeed' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::maxspeed"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::teleport_time' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::teleport_time"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::aiment' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::aiment"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::movetype' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::movetype"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::fov' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::fov"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::blending' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::blending"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::euser2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::euser2"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::iuser1' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::iuser1"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::body' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::body"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::dmgtime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::dmgtime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::effects' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::effects"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::rendermode' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::rendermode"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::button' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::button"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::globalname' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::globalname"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::iuser3' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::iuser3"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::owner' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::owner"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::iuser4' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::iuser4"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::fuser2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::fuser2"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::targetname' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::targetname"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::flFallVelocity' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::flFallVelocity"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::pContainingEntity' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::pContainingEntity"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::fuser1' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::fuser1"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::weapons' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::weapons"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::pushmsec' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::pushmsec"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::skin' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::skin"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::flags' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::flags"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::radsuit_finished' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::radsuit_finished"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::gamestate' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::gamestate"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::fuser4' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::fuser4"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::noise' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::noise"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::message' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::message"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::euser3' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::euser3"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::dmg_save' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::dmg_save"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::iuser2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::iuser2"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::renderamt' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::renderamt"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::frags' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::frags"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::iStepLeft' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::iStepLeft"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::euser1' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::euser1"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::renderfx' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::renderfx"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::groundentity' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::groundentity"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::flSwimTime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::flSwimTime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::flTimeStepSound' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::flTimeStepSound"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::oldbuttons' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::oldbuttons"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::scale' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::scale"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::dmg' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::dmg"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::deadflag' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::deadflag"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::dmg_take' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::dmg_take"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::waterlevel' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::waterlevel"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::target' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::target"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::air_finished' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::air_finished"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::noise2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::noise2"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::groupinfo' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::groupinfo"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::weaponanim' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::weaponanim"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::speed' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::speed"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::fuser3' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::fuser3"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::gaitsequence' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::gaitsequence"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::colormap' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::colormap"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::watertype' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::watertype"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::dmg_inflictor' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::dmg_inflictor"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::classname' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::classname"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::netname' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::netname"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::impacttime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::impacttime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::armorvalue' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::armorvalue"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::noise1' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::noise1"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::sequence' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::sequence"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::flDuckTime' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::flDuckTime"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::framerate' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::framerate"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::max_health' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::max_health"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::team' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::team"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::takedamage' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::takedamage"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::noise3' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::noise3"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::armortype' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::armortype"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entvars_s::spawnflags' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "entvars_s::{ctor}",
+                  "decoratedName": "??0entvars_s@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "entvars_s::spawnflags"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35213.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "df51229470487f5221d5c7aef6fc216b9a010f874c0450130699a638b83c34ee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/katte/projects/NS/main/source/common/vectorclasses.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "02576bc48573095570fc049b4488b797323de480eeec1cdd8edbb5281519664d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/katte/projects/NS/main/source/engine/progdefs.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "2d184ffae3b4e04ac27a3926d6077824425fe76acef614fdfee142467afd06f0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/extdll.h"
+          },
+          "hashes": {
+            "sha-256": "d74a59513834ad001cd200bbbfa911916333fad6385da0d8dbf0feb2dfaf36b5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/public/archtypes.h"
+          },
+          "hashes": {
+            "sha-256": "bf1f127feb9cdba021152ce235afa9149e2cea3c8d19cca792a9f40bfac7bad8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/public/steam/steamtypes.h"
+          },
+          "hashes": {
+            "sha-256": "685337fc0cba5ece309eb398444d8960fc76968c91980929aa0b3366a67cd822"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/winsani_in.h"
+          },
+          "hashes": {
+            "sha-256": "a257d1b52f8105e57377449c2640113bf7b4f4a2b8df1da17f0a3501eaebfef6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/winsani_out.h"
+          },
+          "hashes": {
+            "sha-256": "346a96aa81c4269c9033eda033d7f841f3f7aa862fabf44bb8c1bc6f53f08c64"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/vector.h"
+          },
+          "hashes": {
+            "sha-256": "7d4e475960221bf21fbc3a5f904f106c59896055fe4a753e8bc5a95f9f039796"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/const.h"
+          },
+          "hashes": {
+            "sha-256": "309fe18a659f1df627b00dd648e99ef233ce852fe84575532aba9fee04be92a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/in_buttons.h"
+          },
+          "hashes": {
+            "sha-256": "af9af8461162264e67d0d9a3763318e432f5a814c63e60f451cbbff74f00c898"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/renderingconst.h"
+          },
+          "hashes": {
+            "sha-256": "deb4fbabd207c871ecd776e78ae1ddaf8d715aa1a2d00ae0a5e6953ba7e941c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/engine/edict.h"
+          },
+          "hashes": {
+            "sha-256": "0d840e88c84bcef1a7bd912bec474d2f8a39d1e1289bc34427e3fcb21da30076"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/engine/eiface.h"
+          },
+          "hashes": {
+            "sha-256": "9107644c899075916828568273465e030bea3fb420383a014a51f475be54edd6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/engine/custom.h"
+          },
+          "hashes": {
+            "sha-256": "63ace5ed6bc60867ce033b429c50ebcead683a85ad656688f3ebb3553fa974c1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/crc.h"
+          },
+          "hashes": {
+            "sha-256": "e064d963ad59dd75e84ab17ccf87ccca37a0091a342de5e8cc1276d61a775bb0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/cvardef.h"
+          },
+          "hashes": {
+            "sha-256": "28f683de1a572c78700f11082702d714631e47673ee710e0385633702e9cf88f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/sequence.h"
+          },
+          "hashes": {
+            "sha-256": "01edb0a0963ec7e709a364eccd8560c53220a35430fa1155378cc4b7a60632c4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cdll_dll.h"
+          },
+          "hashes": {
+            "sha-256": "9a26398f27c03a8678b2ca6671690ed1d7a03ce7f3d64db007bb27a13940ba12"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/util.h"
+          },
+          "hashes": {
+            "sha-256": "9f3e6f05d7e88f302df2a59b2e4ea156ff84ce383abd1a77b484c2ef07f80cf5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/activity.h"
+          },
+          "hashes": {
+            "sha-256": "000e518a79d9b7527958a4160940b7bd1f841ec8e092b3c08a54bfd41351cc30"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/enginecallback.h"
+          },
+          "hashes": {
+            "sha-256": "e33381d2c88a69c58c64f3bc939f168e911b32a8a480560a8750e41a5d77787c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/event_flags.h"
+          },
+          "hashes": {
+            "sha-256": "f11113d71111b1b171fcf2540625942e7ddc5fcfb9e95ded7a556baf68201ae7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/game_shared/directorconst.h"
+          },
+          "hashes": {
+            "sha-256": "be64fb07557b9e6e4c3cb0d1a28b093396bca2583dd41351c303cdff975e4444"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/localassert.h"
+          },
+          "hashes": {
+            "sha-256": "4a4f630f2eaaa8bcdb9f4a325d62e5a2b97b0e078877d3de50cee4607806291a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/nowarnings.h"
+          },
+          "hashes": {
+            "sha-256": "1381632fbd811c43b4c79c36da5b439b84889b29975003f71a999ce76cb8ee7b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/types.h"
+          },
+          "hashes": {
+            "sha-256": "e9fc5437679294ad6ecad3cd15e64c28ca28d2279c685ff945db1e19ece13fe1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/cbase.h"
+          },
+          "hashes": {
+            "sha-256": "1c752c5b88f46901953d1b921f3b9ad28e2b2b6a748852b18cca10f647e5a8eb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/common/damagetypes.h"
+          },
+          "hashes": {
+            "sha-256": "de4ca5c222aae4c6d771c6d0a5cee136d7b939bc0289227657a9e0ce9d93312c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/util/checksum.h"
+          },
+          "hashes": {
+            "sha-256": "16c40b2765f5eacb26fdb58ac98764cbd6fc91f175605c4a24977dd003a7413f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/saverestore.h"
+          },
+          "hashes": {
+            "sha-256": "db491e17e2a4eee1b4831ee6702a055d39e51528352e8a89f096c1ed9d4474ac"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/schedule.h"
+          },
+          "hashes": {
+            "sha-256": "0f03525622ff3bc79f7ffe5d1cee18a673266dc59c090b475c9e2b591efae06b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/monsterevent.h"
+          },
+          "hashes": {
+            "sha-256": "73256264f92f303690d7cb7f017e758e831e9edd88451cd4470e2a3b3e6e0e67"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/basemonster.h"
+          },
+          "hashes": {
+            "sha-256": "f2dc96dcae3004e5301fb177c4760e684fa18fc9574a32ee4dcbbee4ac9037de"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/client.h"
+          },
+          "hashes": {
+            "sha-256": "b6adb6fbc9ccc826e3d7fe75023d6c1e1051abbf2d7dbb3f798d8a0a8bd0625e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/decals.h"
+          },
+          "hashes": {
+            "sha-256": "73424a5652be6de95c6ee4ba0b4f7853c14a842645a777332ecf173209913ad3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/gamerules.h"
+          },
+          "hashes": {
+            "sha-256": "04209c4f11e8b48f114e8c22f849b48131e0a71c1528d68d567442ece4c5add8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/katte/projects/ns/main/source/dlls/game.h"
+          },
+          "hashes": {
+            "sha-256": "129133c273e640bad6ad789edfff1d2fe708421fd95e74c344221156e39371a0"
+          }
+        }
+      ]
+    }
+  ]
+}

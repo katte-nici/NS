@@ -48,20 +48,77 @@ AvHAIDeployableStructureType AIBO_MapStringToStructure(const std::string& Struct
     return STRUCTURE_NONE;
 }
 
+AvHAIBuildCondition AIBO_MapStringToBuildCondition(const std::string& ConditionName)
+{
+    if (!stricmp(ConditionName.c_str(), "StructureExists"))
+        return STRUCTURE_EXISTS;
+    if (!stricmp(ConditionName.c_str(), "UpgradeExists"))
+        return UPGRADE_EXISTS;
+    if (!stricmp(ConditionName.c_str(), "TimeElapsed"))
+        return TIME_ELAPSED;
+	return CONDITION_NONE;
+}
+
+AvHAIBuildOrderType AIBO_MapStringToBuildOrderType(const std::string& BuildOrderTypeName)
+{
+    if (!stricmp(BuildOrderTypeName.c_str(), "Structure"))
+        return BUILD_ORDER_STRUCTURE;
+    if (!stricmp(BuildOrderTypeName.c_str(), "Upgrade"))
+        return BUILD_ORDER_UPGRADE;
+    return BUILD_ORDER_NONE;
+}
+
+AvHTechID AIBO_MapStringToTech(const std::string& TechName)
+{
+    if (!stricmp(TechName.c_str(), "Electrification"))
+		return TECH_RESEARCH_ELECTRICAL;
+    if (!stricmp(TechName.c_str(), "ArmorOne"))
+        return TECH_RESEARCH_ARMOR_ONE;
+    if (!stricmp(TechName.c_str(), "ArmorTwo"))
+        return TECH_RESEARCH_ARMOR_TWO;
+    if (!stricmp(TechName.c_str(), "ArmorThree"))
+        return TECH_RESEARCH_ARMOR_THREE;
+    if (!stricmp(TechName.c_str(), "WeaponsOne"))
+        return TECH_RESEARCH_WEAPONS_ONE;
+    if (!stricmp(TechName.c_str(), "WeaponsTwo"))
+        return TECH_RESEARCH_WEAPONS_TWO;
+    if (!stricmp(TechName.c_str(), "WeaponsThree"))
+        return TECH_RESEARCH_WEAPONS_THREE;
+	if (!stricmp(TechName.c_str(), "AdvancedTurretFactory"))
+		return TECH_ADVANCED_TURRET_FACTORY;
+	if (!stricmp(TechName.c_str(), "Jetpacks"))
+		return TECH_RESEARCH_JETPACKS;
+    if (!stricmp(TechName.c_str(), "HeavyArmor"))
+		return TECH_RESEARCH_HEAVYARMOR;
+    if (!stricmp(TechName.c_str(), "DistressBeacon"))
+		return TECH_RESEARCH_DISTRESSBEACON;
+	if (!stricmp(TechName.c_str(), "HealthTech"))
+		return TECH_RESEARCH_HEALTH;
+	if (!stricmp(TechName.c_str(), "MotionTracking"))
+		return TECH_RESEARCH_MOTIONTRACK;
+	if (!stricmp(TechName.c_str(), "PhaseTech"))
+		return TECH_RESEARCH_PHASETECH;
+    if (!stricmp(TechName.c_str(), "Catalysts"))
+		return TECH_RESEARCH_CATALYSTS;
+	if (!stricmp(TechName.c_str(), "Grenades"))
+		return TECH_RESEARCH_GRENADES;
+    return TECH_NULL;
+}
+
 static void AIBO_LoadHardCodedMarineBuildOrder()
 {
     Marine_build_order defaultOrder;
     defaultOrder.BuildOrder = {
-        {STRUCTURE_MARINE_INFANTRYPORTAL, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_ARMOURY, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_TURRETFACTORY, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_TURRET, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_RESTOWER, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_ARMSLAB, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_OBSERVATORY, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_PHASEGATE, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_ADVARMOURY, STRUCTURE_MARINE_COMMCHAIR},
-        {STRUCTURE_MARINE_PROTOTYPELAB, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_INFANTRYPORTAL, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_ARMOURY, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_TURRETFACTORY, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_TURRET, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_RESTOWER, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_ARMSLAB, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_OBSERVATORY, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_PHASEGATE, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_ADVARMOURY, STRUCTURE_MARINE_COMMCHAIR},
+        //{STRUCTURE_MARINE_PROTOTYPELAB, STRUCTURE_MARINE_COMMCHAIR},
     };
     defaultOrder.BuildOrderName = "Default Hard-Coded Build-Order";
     defaultOrder.Weight = 1.0f;
@@ -127,9 +184,51 @@ void AIBO_ParseMarineBuildOrder()
         }
         else if (Line.find("entry=") == 0)
         {
-            std::string entryName = Line.substr(6);
-            AvHAIDeployableStructureType structure = AIBO_MapStringToStructure(entryName);
-            Build_order_entry entry = { structure, STRUCTURE_NONE };
+            std::string entryLine = Line.substr(6);
+
+			// Split the entry line by commas
+			vector<std::string> entryParts;
+            entryParts.reserve(7);
+			std::string entryName;
+			size_t pos = 0;
+			int entryCount = 0;
+			while ((pos = entryLine.find(',')) != std::string::npos) {
+				entryName = entryLine.substr(0, pos);
+				entryLine.erase(0, pos + 1);
+				entryParts.push_back(entryName);
+				entryCount++;
+			}
+			// Add the last part after the last comma
+			if (!entryLine.empty()) {
+				entryParts.push_back(entryLine);
+				entryCount++;
+			}
+            if (entryCount != 7)
+            {
+				//std::string errorMessage = "Invalid entry format in build order file. Expected 7 parts, got " + std::to_string(entryCount) + ". Skipping entry.\n";
+				//g_engfuncs.pfnServerPrint(errorMessage.c_str());
+				continue; // Invalid entry, skip
+            }
+            
+            Build_order_entry entry;
+			entry.BuildOrderType = AIBO_MapStringToBuildOrderType(entryParts[0]);
+			entry.StructureToBuild = (entry.BuildOrderType == BUILD_ORDER_STRUCTURE) ? AIBO_MapStringToStructure(entryParts[1]) : STRUCTURE_NONE;
+			entry.UpgradeToResearch = (entry.BuildOrderType == BUILD_ORDER_UPGRADE) ? AIBO_MapStringToTech(entryParts[1]) : TECH_NULL;
+			entry.BuildConditionOne = AIBO_MapStringToBuildCondition(entryParts[2]);
+			entry.StructureRequiredOne = (entry.BuildConditionOne == STRUCTURE_EXISTS) ? AIBO_MapStringToStructure(entryParts[3]) : STRUCTURE_NONE;
+			entry.UpgradeRequiredOne = (entry.BuildConditionOne == UPGRADE_EXISTS) ? AIBO_MapStringToTech(entryParts[3]) : TECH_NULL;
+            entry.Connective = (!stricmp(entryParts[4].c_str(), "or")) ? OR : AND;
+			entry.BuildConditionTwo = AIBO_MapStringToBuildCondition(entryParts[5]);
+			entry.StructureRequiredTwo = (entry.BuildConditionTwo == STRUCTURE_EXISTS) ? AIBO_MapStringToStructure(entryParts[6]) : STRUCTURE_NONE;
+			entry.UpgradeRequiredTwo = (entry.BuildConditionTwo == UPGRADE_EXISTS) ? AIBO_MapStringToTech(entryParts[6]) : TECH_NULL;
+            if (entry.BuildConditionOne == TIME_ELAPSED)
+            {
+                entry.TimeLimitInSecondsOne = std::stoi(entryParts[3]);
+            }
+            if (entry.BuildConditionTwo == TIME_ELAPSED)
+            {
+                entry.TimeLimitInSecondsOne = std::stoi(entryParts[6]);
+            }
             currentOrder.BuildOrder.push_back(entry);
         }
     }
@@ -180,9 +279,14 @@ void AIBO_SelectBuildOrderRandomly() {
     // AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders[AIBO_IntRandomRange(0, AIBO_MarineBuildOrders.size() - 1)];
     CommanderHasAnnouncedBuildOrder = false;
 
-    std::string boMessage = "Selected build order: " + AIBO_CurrentBuildOrder->BuildOrderName + "\n";
-    char LoadedMsg[128];
-    sprintf(LoadedMsg, "%s", boMessage.c_str());
-    g_engfuncs.pfnServerPrint(LoadedMsg);
+ //   std::string boMessage = "Selected build order: " + AIBO_CurrentBuildOrder->BuildOrderName + "\n";
+ //   char LoadedMsg[128];
+ //   sprintf(LoadedMsg, "%s", boMessage.c_str());
+ //   g_engfuncs.pfnServerPrint(LoadedMsg);
+ //   for (const auto& entry : AIBO_CurrentBuildOrder->BuildOrder)
+ //   {
+ //       std::string entryMessage = " - " + std::to_string(entry.BuildOrderType) + " " + std::to_string(entry.StructureToBuild) + "\n";
+ //       g_engfuncs.pfnServerPrint(entryMessage.c_str());
+	//}
 
 }
