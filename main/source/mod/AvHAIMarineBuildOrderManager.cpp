@@ -4,9 +4,19 @@
 
 std::vector<Marine_build_order> AIBO_MarineBuildOrders;
 Marine_build_order* AIBO_CurrentBuildOrder = nullptr;
-bool CommanderHasAnnouncedBuildOrder = false;
+int BuildMessageAnnouncementCountdown = 3;
 
 bool bo_rng_initialized = false;
+int BuildMessageAnnouncementIndex = 0;
+
+const std::vector<std::string> BuildOrderMessageTemplates = {
+    "Guys today we're doing a nice {} build!",
+    "Today we're going to do a {} build, guys!",
+    "I'm feeling like trying a {} build today, my friends!",
+    "Let's go for a {} build today, team!",
+    "Why not do the famous {} build today, everyone?",
+    "I'm not sure about you, but I'm excited to try the {} build this time!",
+};
 
 int AIBO_IntRandomRange(int MinValue, int MaxValue)
 {
@@ -128,7 +138,7 @@ static void AIBO_LoadHardCodedMarineBuildOrder()
 
 void AIBO_ParseMarineBuildOrder()
 {
-    CommanderHasAnnouncedBuildOrder = false;
+    BuildMessageAnnouncementCountdown = 3;
     AIBO_MarineBuildOrders.clear();
 
     std::string BuildOrderFileString = std::string(getModDirectory()) + "/marine_build_orders.txt";
@@ -182,11 +192,14 @@ void AIBO_ParseMarineBuildOrder()
         {
             currentOrder.Weight = std::stof(Line.substr(7));
         }
+        else if (Line.find("initialIPs=") == 0)
+        {
+			currentOrder.InitialInfantryPortalCount = std::stoi(Line.substr(11));
+        }
         else if (Line.find("entry=") == 0)
         {
             std::string entryLine = Line.substr(6);
 
-			// Split the entry line by commas
 			vector<std::string> entryParts;
             entryParts.reserve(7);
 			std::string entryName;
@@ -205,8 +218,6 @@ void AIBO_ParseMarineBuildOrder()
 			}
             if (entryCount != 7)
             {
-				//std::string errorMessage = "Invalid entry format in build order file. Expected 7 parts, got " + std::to_string(entryCount) + ". Skipping entry.\n";
-				//g_engfuncs.pfnServerPrint(errorMessage.c_str());
 				continue; // Invalid entry, skip
             }
             
@@ -224,10 +235,14 @@ void AIBO_ParseMarineBuildOrder()
             if (entry.BuildConditionOne == TIME_ELAPSED)
             {
                 entry.TimeLimitInSecondsOne = std::stoi(entryParts[3]);
+                std::string message = "TimeLimitOne tried parsing " + entryParts[3] + ". Got " + std::to_string(std::stoi(entryParts[3])) + "\n";
+                g_engfuncs.pfnServerPrint(message.c_str());
             }
             if (entry.BuildConditionTwo == TIME_ELAPSED)
             {
-                entry.TimeLimitInSecondsOne = std::stoi(entryParts[6]);
+                entry.TimeLimitInSecondsTwo = std::stoi(entryParts[6]);
+                std::string message = "TimeLimitOne tried parsing " + entryParts[6] + ". Got " + std::to_string(std::stoi(entryParts[6])) + "\n";
+                g_engfuncs.pfnServerPrint(message.c_str());
             }
             currentOrder.BuildOrder.push_back(entry);
         }
@@ -239,8 +254,7 @@ void AIBO_ParseMarineBuildOrder()
 
 
 void AIBO_ResetMarineBuildOrder() {
-	AIBO_CurrentBuildOrder = nullptr; // Reset current build order
-    CommanderHasAnnouncedBuildOrder = false;
+	BuildMessageAnnouncementCountdown = 3; // Reset announcement countdown
 }
 
 void AIBO_SelectBuildOrderRandomly() {
@@ -277,16 +291,18 @@ void AIBO_SelectBuildOrderRandomly() {
     }
 
     // AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders[AIBO_IntRandomRange(0, AIBO_MarineBuildOrders.size() - 1)];
-    CommanderHasAnnouncedBuildOrder = false;
+    BuildMessageAnnouncementCountdown = 3;
+	BuildMessageAnnouncementIndex = rand() % BuildOrderMessageTemplates.size(); // Reset the announcement index
+}
 
- //   std::string boMessage = "Selected build order: " + AIBO_CurrentBuildOrder->BuildOrderName + "\n";
- //   char LoadedMsg[128];
- //   sprintf(LoadedMsg, "%s", boMessage.c_str());
- //   g_engfuncs.pfnServerPrint(LoadedMsg);
- //   for (const auto& entry : AIBO_CurrentBuildOrder->BuildOrder)
- //   {
- //       std::string entryMessage = " - " + std::to_string(entry.BuildOrderType) + " " + std::to_string(entry.StructureToBuild) + "\n";
- //       g_engfuncs.pfnServerPrint(entryMessage.c_str());
-	//}
-
+std::string GetBuildOrderMessage() {
+    if (!AIBO_CurrentBuildOrder) return "No build order selected!";
+    const std::string& tmpl = BuildOrderMessageTemplates[BuildMessageAnnouncementIndex];
+    size_t pos = tmpl.find("{}");
+    if (pos != std::string::npos) {
+        std::string msg = tmpl;
+        msg.replace(pos, 2, AIBO_CurrentBuildOrder->BuildOrderName);
+        return msg;
+    }
+    return tmpl;
 }

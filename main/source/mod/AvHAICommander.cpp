@@ -3275,12 +3275,12 @@ void AICOMM_CommanderThink(AvHAIPlayer* pBot)
 		}
 	}
 
-	if (!CommanderHasAnnouncedBuildOrder)
+	if (BuildMessageAnnouncementCountdown > 0)
 	{
-		CommanderHasAnnouncedBuildOrder = true;
+		BuildMessageAnnouncementCountdown--;
 		if (AIBO_CurrentBuildOrder)
 		{
-			std::string BuildOrderMessage = "Guys today we're doing a nice " + AIBO_CurrentBuildOrder->BuildOrderName + " build!";
+			std::string BuildOrderMessage = GetBuildOrderMessage();
 			char BuildOrderMessageBuffer[256];
 			strncpy(BuildOrderMessageBuffer, BuildOrderMessage.c_str(), sizeof(BuildOrderMessageBuffer) - 1);
 			BuildOrderMessageBuffer[sizeof(BuildOrderMessageBuffer) - 1] = '\0';
@@ -4629,19 +4629,54 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 		return false;
 	}
 
+	// Build the initial infantry portals
+	if (NumInfPortals < AIBO_CurrentBuildOrder->InitialInfantryPortalCount)
+	{
+		if (pBot->Player->GetResources() < BALANCE_VAR(kInfantryPortalCost)) { return true; }
+
+		Vector BuildLocation = AITAC_GetRandomBuildHintInLocation(STRUCTURE_MARINE_INFANTRYPORTAL, CommChair.Location, BALANCE_VAR(kCommandStationBuildDistance));
+
+		if (!vIsZero(BuildLocation))
+		{
+			bool bSuccess = AICOMM_AddStructureToBase(pBot, STRUCTURE_MARINE_INFANTRYPORTAL, BuildLocation, BaseToBuildOut);
+
+			if (bSuccess) { return true; }
+		}
+
+		int NumAttempts = 0;
+
+		while (NumAttempts < 5)
+		{
+			BuildLocation = UTIL_GetRandomPointOnNavmeshInRadiusIgnoreReachability(GetBaseNavProfile(STRUCTURE_BASE_NAV_PROFILE), CommChair.Location, BALANCE_VAR(kCommandStationBuildDistance) * 0.8f);
+
+			if (!vIsZero(BuildLocation))
+			{
+				bool bSuccess = AICOMM_AddStructureToBase(pBot, STRUCTURE_MARINE_INFANTRYPORTAL, BuildLocation, BaseToBuildOut);
+
+				if (bSuccess) { return true; }
+			}
+
+			BuildLocation = UTIL_GetRandomPointOnNavmeshInRadius(GetBaseNavProfile(ONOS_BASE_NAV_PROFILE), CommChair.Location, BALANCE_VAR(kCommandStationBuildDistance) * 0.8f);
+
+			if (!vIsZero(BuildLocation))
+			{
+				bool bSuccess = AICOMM_AddStructureToBase(pBot, STRUCTURE_MARINE_INFANTRYPORTAL, BuildLocation, BaseToBuildOut);
+
+				if (bSuccess) { return true; }
+			}
+
+			NumAttempts++;
+		}
+
+		return pBot->Player->GetResources() <= (BALANCE_VAR(kInfantryPortalCost) * 1.5f);
+	}
+
 	for (auto& NextBuildOrderEntry : AIBO_CurrentBuildOrder->BuildOrder)
 	{
-		//g_engfuncs.pfnServerPrint("So we get into auto.\n");
-		//char testmsg[256];
-		//sprintf(testmsg, "trying to build %s\n", std::to_string(NextBuildOrderEntry.StructureToBuild).c_str());
-		//g_engfuncs.pfnServerPrint(testmsg);
-		//sprintf(testmsg, "build order type is %s\n", std::to_string(NextBuildOrderEntry.BuildOrderType).c_str());
-		//g_engfuncs.pfnServerPrint(testmsg);
 
 		if (NextBuildOrderEntry.BuildOrderType != BUILD_ORDER_STRUCTURE) { continue; } // Maybe we care about Upgrades later
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_NONE) { continue; }
 
-		// g_engfuncs.pfnServerPrint("Reached middle of for auto.\n");
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_MARINE_RESTOWER)
 		{
 			if (AICOMM_ShouldCommanderPrioritiseNodes(pBot) && pBot->Player->GetResources() < 30) { return false; }
@@ -4700,18 +4735,18 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_MARINE_ADVARMOURY && Armoury.StructureType == STRUCTURE_MARINE_ADVARMOURY) { continue; }
 		if (Structure.IsValid() && NextBuildOrderEntry.StructureToBuild != STRUCTURE_MARINE_ADVARMOURY) { continue; }
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_MARINE_INFANTRYPORTAL && NumInfPortals >= DesiredInfPortals) { continue; }
+		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_MARINE_TURRET && (!TurretFactory.IsValid() || !TurretFactory.IsCompleted()) ) { continue; }
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_MARINE_TURRET && NumTurrets >= 5) { continue; }
 
 		if (pBot->Player->GetResources() < StructureCost) { return true; }
 
-		// Check the conditions for this entry
-		bool conditionOne = true;
-		bool conditionTwo = true;
-		bool connective = true;
+		// Check all the conditions for this entry
+		bool conditionOne = NextBuildOrderEntry.BuildConditionOne == CONDITION_NONE ? true : false;
+		bool conditionTwo = NextBuildOrderEntry.BuildConditionTwo == CONDITION_NONE ? true : false;;
+		bool connective = false;
 
 		if (NextBuildOrderEntry.BuildConditionOne == STRUCTURE_EXISTS)
 		{
-			// Check if the structure in StructureRequiredOne exists anywhere on the map. If not set conditionOne to false.
 			DeployableSearchFilter RequiredStructuresFilter;
 			RequiredStructuresFilter.DeployableTeam = BotTeam;
 			RequiredStructuresFilter.DeployableTypes = NextBuildOrderEntry.StructureRequiredOne;
@@ -4719,31 +4754,19 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 			RequiredStructuresFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
 
 			vector <AvHAIBuildableStructure> FoundStructures = AITAC_FindAllDeployables(ZERO_VECTOR, &RequiredStructuresFilter);
-			if (FoundStructures.size() == 0)
-			{
-				conditionOne = false;
-			}
+			conditionOne = FoundStructures.size() == 0 ? false : true;
 		}
 		if (NextBuildOrderEntry.BuildConditionOne == UPGRADE_EXISTS)
 		{
-			// Check if the upgrade in UpgradeRequiredOne exists. If not set conditionOne to false.
-			if (!AITAC_ResearchIsComplete(BotTeam, NextBuildOrderEntry.UpgradeRequiredOne))
-			{
-				conditionOne = false;
-			}
+			conditionOne = (NextBuildOrderEntry.UpgradeRequiredOne == TECH_NULL || !AITAC_ResearchIsComplete(BotTeam, NextBuildOrderEntry.UpgradeRequiredOne)) ? false : true;
 		}
 		if (NextBuildOrderEntry.BuildConditionOne == TIME_ELAPSED)
 		{
-			// Check if the time elapsed since the start of the match is greater than TimeLimitInSecondsOne. If not set conditionOne to false.
-			if (AIMGR_GetMatchLength() < NextBuildOrderEntry.TimeLimitInSecondsOne)
-			{
-				conditionOne = false;
-			}
+			conditionOne = AIMGR_GetMatchLength() < NextBuildOrderEntry.TimeLimitInSecondsOne ? false : true;
 		}
 
 		if (NextBuildOrderEntry.BuildConditionTwo == STRUCTURE_EXISTS)
 		{
-			// Check if the structure in StructureRequiredOne exists anywhere on the map. If not set conditionOne to false.
 			DeployableSearchFilter RequiredStructuresFilter;
 			RequiredStructuresFilter.DeployableTeam = BotTeam;
 			RequiredStructuresFilter.DeployableTypes = NextBuildOrderEntry.StructureRequiredTwo;
@@ -4751,26 +4774,16 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 			RequiredStructuresFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
 
 			vector <AvHAIBuildableStructure> FoundStructures = AITAC_FindAllDeployables(ZERO_VECTOR, &RequiredStructuresFilter);
-			if (FoundStructures.size() == 0)
-			{
-				conditionTwo = false;
-			}
+			conditionTwo = FoundStructures.size() == 0 ? false : true;
 		}
 		if (NextBuildOrderEntry.BuildConditionTwo == UPGRADE_EXISTS)
 		{
-			// Check if the upgrade in UpgradeRequiredOne exists. If not set conditionOne to false.
-			if (!AITAC_ResearchIsComplete(BotTeam, NextBuildOrderEntry.UpgradeRequiredTwo))
-			{
-				conditionTwo = false;
-			}
+			conditionTwo = (NextBuildOrderEntry.UpgradeRequiredTwo == TECH_NULL || !AITAC_ResearchIsComplete(BotTeam, NextBuildOrderEntry.UpgradeRequiredTwo)) ? false : true;
 		}
 		if (NextBuildOrderEntry.BuildConditionTwo == TIME_ELAPSED)
 		{
-			// Check if the time elapsed since the start of the match is greater than TimeLimitInSecondsOne. If not set conditionOne to false.
-			if (AIMGR_GetMatchLength() < NextBuildOrderEntry.TimeLimitInSecondsTwo)
-			{
-				conditionOne = false;
-			}
+
+			conditionTwo = AIMGR_GetMatchLength() < NextBuildOrderEntry.TimeLimitInSecondsTwo ? false : true;
 		}
 
 		if (NextBuildOrderEntry.Connective == AND)
@@ -4781,15 +4794,7 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 		{
 			connective = conditionOne || conditionTwo;
 		}
-		//char testmsg[256];
-		//sprintf(testmsg, "trying to build %s\n", std::to_string(NextBuildOrderEntry.StructureToBuild).c_str());
-		//g_engfuncs.pfnServerPrint(testmsg);
-		//sprintf(testmsg, "Condition one: %s\n", std::to_string(conditionOne).c_str());
-		//g_engfuncs.pfnServerPrint(testmsg);
-		//sprintf(testmsg, "Condition two: %s\n", std::to_string(conditionTwo).c_str());
-		//g_engfuncs.pfnServerPrint(testmsg);
-		//sprintf(testmsg, "Connective: %s\n", std::to_string(connective).c_str());
-		//g_engfuncs.pfnServerPrint(testmsg);
+
 		if (!connective) { continue; }
 		// Done checking the conditions
 
@@ -4804,6 +4809,12 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 			if (bSuccess) { return true; }
 
 			return pBot->Player->GetResources() <= (BALANCE_VAR(kArmoryUpgradeCost) * 1.5f);
+		}
+
+		if (!connective)
+		{
+			std::string debugMessage = "We are trying to build " + std::to_string(NextBuildOrderEntry.StructureToBuild) + " even though we shouldn't.";
+			g_engfuncs.pfnServerPrint(debugMessage.c_str());
 		}
 
 		Vector BuildLocation = AITAC_GetRandomBuildHintInLocation(NextBuildOrderEntry.StructureToBuild, BaseToBuildOut->BaseLocation, UTIL_MetresToGoldSrcUnits(20.0f));

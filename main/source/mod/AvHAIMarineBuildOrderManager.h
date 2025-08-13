@@ -7,8 +7,6 @@
 #include <string>
 #include <vector>
 
-extern bool CommanderHasAnnouncedBuildOrder;
-
 typedef enum
 {
 	BUILD_ORDER_NONE,
@@ -49,11 +47,15 @@ typedef struct _BUILD_ORDER_ENTRY
 typedef struct _MARINE_BUILD_ORDER {
 	std::vector<Build_order_entry> BuildOrder = {};
     std::string BuildOrderName = "";
-	float Weight = 1.0f; // Weight for the build order, used for selection in case of multiple orders
+	float Weight = 1.0f;
+	int InitialInfantryPortalCount = 1;
 } Marine_build_order;
 
 extern std::vector<Marine_build_order> AIBO_MarineBuildOrders;
 extern Marine_build_order* AIBO_CurrentBuildOrder;
+extern vector<std::string> BuildOrderMessages;
+extern int BuildMessageAnnouncementCountdown;
+extern int BuildMessageAnnouncementIndex;
 
 static void AIBO_LoadHardCodedMarineBuildOrder();
 void AIBO_ParseMarineBuildOrder();
@@ -65,5 +67,6 @@ AvHAIDeployableStructureType AIBO_MapStringToStructure(const std::string& Struct
 AvHAIBuildCondition AIBO_MapStringToBuildCondition(const std::string& ConditionName);
 AvHAIBuildOrderType AIBO_MapStringToBuildOrderType(const std::string& BuildOrderTypeName);
 AvHTechID AIBO_MapStringToTech(const std::string& TechName);
+std::string GetBuildOrderMessage();
 
 #endif
