@@ -58,6 +58,30 @@ AvHAIDeployableStructureType AIBO_MapStringToStructure(const std::string& Struct
     return STRUCTURE_NONE;
 }
 
+AvHAIDeployableStructureType AIBO_MapTechToRequiredStructure(AvHTechID TechID)
+{
+    switch (TechID)
+    {
+        case TECH_RESEARCH_ELECTRICAL: return STRUCTURE_MARINE_TURRETFACTORY;
+        case TECH_RESEARCH_ARMOR_ONE: return STRUCTURE_MARINE_ARMSLAB;
+        case TECH_RESEARCH_ARMOR_TWO: return STRUCTURE_MARINE_ARMSLAB;
+        case TECH_RESEARCH_ARMOR_THREE: return STRUCTURE_MARINE_ARMSLAB;
+        case TECH_RESEARCH_WEAPONS_ONE: return STRUCTURE_MARINE_ARMSLAB;
+        case TECH_RESEARCH_WEAPONS_TWO: return STRUCTURE_MARINE_ARMSLAB;
+        case TECH_RESEARCH_WEAPONS_THREE: return STRUCTURE_MARINE_ARMSLAB;
+        case TECH_ADVANCED_TURRET_FACTORY: return STRUCTURE_MARINE_TURRETFACTORY;
+        case TECH_RESEARCH_JETPACKS: return STRUCTURE_MARINE_PROTOTYPELAB;
+        case TECH_RESEARCH_HEAVYARMOR: return STRUCTURE_MARINE_PROTOTYPELAB;
+        case TECH_RESEARCH_DISTRESSBEACON: return STRUCTURE_MARINE_OBSERVATORY;
+        //case TECH_RESEARCH_HEALTH: return STRUCTURE_MARINE_ARMOURY;
+        case TECH_RESEARCH_MOTIONTRACK: return STRUCTURE_MARINE_OBSERVATORY;
+        case TECH_RESEARCH_PHASETECH: return STRUCTURE_MARINE_OBSERVATORY;
+        case TECH_RESEARCH_CATALYSTS: return STRUCTURE_MARINE_ARMOURY;
+        case TECH_RESEARCH_GRENADES: return STRUCTURE_MARINE_ARMOURY;
+        default: return STRUCTURE_NONE; // No structure required for this tech
+    }
+}
+
 AvHAIBuildCondition AIBO_MapStringToBuildCondition(const std::string& ConditionName)
 {
     if (!stricmp(ConditionName.c_str(), "StructureExists"))
@@ -115,7 +139,53 @@ AvHTechID AIBO_MapStringToTech(const std::string& TechName)
     return TECH_NULL;
 }
 
-static void AIBO_LoadHardCodedMarineBuildOrder()
+AvHMessageID AIBO_MapTechIDToMessageID(AvHTechID TechID)
+{
+    switch (TechID)
+    {
+        case TECH_RESEARCH_ELECTRICAL: return RESEARCH_ELECTRICAL;
+        case TECH_RESEARCH_ARMOR_ONE: return RESEARCH_ARMOR_ONE;
+        case TECH_RESEARCH_ARMOR_TWO: return RESEARCH_ARMOR_TWO;
+        case TECH_RESEARCH_ARMOR_THREE: return RESEARCH_ARMOR_THREE;
+        case TECH_RESEARCH_WEAPONS_ONE: return RESEARCH_WEAPONS_ONE;
+        case TECH_RESEARCH_WEAPONS_TWO: return RESEARCH_WEAPONS_TWO;
+        case TECH_RESEARCH_WEAPONS_THREE: return RESEARCH_WEAPONS_THREE;
+        case TECH_ADVANCED_TURRET_FACTORY: return TURRET_FACTORY_UPGRADE;
+        case TECH_RESEARCH_JETPACKS: return RESEARCH_JETPACKS;
+        case TECH_RESEARCH_HEAVYARMOR: return RESEARCH_HEAVYARMOR;
+        case TECH_RESEARCH_DISTRESSBEACON: return RESEARCH_DISTRESSBEACON;
+        case TECH_RESEARCH_HEALTH: return RESEARCH_HEALTH;
+        case TECH_RESEARCH_MOTIONTRACK: return RESEARCH_MOTIONTRACK;
+        case TECH_RESEARCH_PHASETECH: return RESEARCH_PHASETECH;
+        case TECH_RESEARCH_CATALYSTS: return RESEARCH_CATALYSTS;
+        case TECH_RESEARCH_GRENADES: return RESEARCH_GRENADES;
+        default: return MESSAGE_NULL;
+    }
+}
+
+int AIBO_GetResearchCost(AvHTechID TechID)
+{
+    switch (TechID)
+    {
+    case TECH_RESEARCH_ELECTRICAL: return (BALANCE_VAR(kElectricalUpgradeResearchCost));
+        case TECH_RESEARCH_ARMOR_ONE: return (BALANCE_VAR(kArmorOneResearchCost));
+        case TECH_RESEARCH_ARMOR_TWO: return (BALANCE_VAR(kArmorTwoResearchCost));
+        case TECH_RESEARCH_ARMOR_THREE: return (BALANCE_VAR(kArmorThreeResearchCost));
+        case TECH_RESEARCH_WEAPONS_ONE: return (BALANCE_VAR(kWeaponsOneResearchCost));
+        case TECH_RESEARCH_WEAPONS_TWO: return (BALANCE_VAR(kWeaponsTwoResearchCost));
+        case TECH_RESEARCH_WEAPONS_THREE: return (BALANCE_VAR(kWeaponsThreeResearchCost));
+        case TECH_ADVANCED_TURRET_FACTORY: return (BALANCE_VAR(kTurretFactoryUpgradeCost));
+        case TECH_RESEARCH_JETPACKS: return (BALANCE_VAR(kJetpacksResearchCost));
+        case TECH_RESEARCH_HEAVYARMOR: return (BALANCE_VAR(kHeavyArmorResearchCost));
+        case TECH_RESEARCH_MOTIONTRACK: return (BALANCE_VAR(kMotionTrackingResearchCost));
+        case TECH_RESEARCH_PHASETECH: return (BALANCE_VAR(kPhaseTechResearchCost));
+        case TECH_RESEARCH_CATALYSTS: return (BALANCE_VAR(kCatalystResearchCost));
+        case TECH_RESEARCH_GRENADES: return (BALANCE_VAR(kGrenadesResearchCost));
+        default: return -1; // No cost for this tech
+    }
+}
+
+void AIBO_LoadHardCodedMarineBuildOrder()
 {
     Marine_build_order defaultOrder;
     defaultOrder.BuildOrder = {

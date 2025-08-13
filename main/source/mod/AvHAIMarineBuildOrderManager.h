@@ -57,15 +57,18 @@ extern vector<std::string> BuildOrderMessages;
 extern int BuildMessageAnnouncementCountdown;
 extern int BuildMessageAnnouncementIndex;
 
-static void AIBO_LoadHardCodedMarineBuildOrder();
+void AIBO_LoadHardCodedMarineBuildOrder();
 void AIBO_ParseMarineBuildOrder();
 void AIBO_ResetMarineBuildOrder();
 void AIBO_SelectBuildOrderRandomly();
 int AIBO_IntRandomRange(int MinValue, int MaxValue);
 float AIBO_FloatRandomRange(float MinValue, float MaxValue);
 AvHAIDeployableStructureType AIBO_MapStringToStructure(const std::string& StructureName);
+AvHAIDeployableStructureType AIBO_MapTechToRequiredStructure(AvHTechID TechID);
 AvHAIBuildCondition AIBO_MapStringToBuildCondition(const std::string& ConditionName);
 AvHAIBuildOrderType AIBO_MapStringToBuildOrderType(const std::string& BuildOrderTypeName);
+AvHMessageID AIBO_MapTechIDToMessageID(AvHTechID TechID);
+int AIBO_GetResearchCost(AvHTechID TechID);
 AvHTechID AIBO_MapStringToTech(const std::string& TechName);
 std::string GetBuildOrderMessage();
 

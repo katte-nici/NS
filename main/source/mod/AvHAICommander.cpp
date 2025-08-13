@@ -1811,138 +1811,92 @@ bool AICOMM_CheckForNextResearchAction(AvHAIPlayer* pBot)
 	StructureFilter.ReachabilityFlags = AI_REACHABILITY_MARINE;
 	StructureFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
 
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_GRENADES))
+	// Let's put the new logic here. We iterate over the build order just like when building the main base.
+	if (!AIBO_CurrentBuildOrder)
 	{
-		StructureFilter.DeployableTypes = STRUCTURE_MARINE_ARMOURY | STRUCTURE_MARINE_ADVARMOURY;
-		StructureFilter.ExcludeStatusFlags |= STRUCTURE_STATUS_RESEARCHING;
-
-		AvHAIBuildableStructure Armoury = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(CommanderTeam), &StructureFilter);
-
-		if (Armoury.IsValid())
-		{
-			bool bSuccess = AICOMM_ResearchTech(pBot, &Armoury, RESEARCH_GRENADES);
-
-			if (bSuccess) { return true; }
-
-			return pBot->Player->GetResources() < (BALANCE_VAR(kGrenadesResearchCost) * 1.5f);
-		}
+		g_engfuncs.pfnServerPrint("Trying to research tech but no current build order set.\n");
+		return false;
 	}
 
-	StructureFilter.DeployableTypes = STRUCTURE_MARINE_ARMSLAB;
-	StructureFilter.ExcludeStatusFlags |= STRUCTURE_STATUS_RESEARCHING;
-
-	AvHAIBuildableStructure ArmsLab = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(CommanderTeam), &StructureFilter);
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_ARMOR_ONE))
+	// This exact check exists twice in this file.
+	// Perhaps we should move it to a function in AvHAIMarineBuildOrderManager?
+	// Note to future me: Do that! With love your past self.
+	for (auto& NextBuildOrderEntry : AIBO_CurrentBuildOrder->BuildOrder)
 	{
-		if (ArmsLab.IsValid())
+		if (NextBuildOrderEntry.BuildOrderType != BUILD_ORDER_UPGRADE) { continue; }
+		if (NextBuildOrderEntry.UpgradeToResearch == TECH_NULL) { continue; }
+
+		// Check the conditions defined in the build order
+		bool conditionOne = NextBuildOrderEntry.BuildConditionOne == CONDITION_NONE ? true : false;
+		bool conditionTwo = NextBuildOrderEntry.BuildConditionTwo == CONDITION_NONE ? true : false;;
+		bool connective = false;
+
+		if (NextBuildOrderEntry.BuildConditionOne == STRUCTURE_EXISTS)
 		{
-			bool bSuccess = AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_ARMOR_ONE);
+			DeployableSearchFilter RequiredStructuresFilter;
+			RequiredStructuresFilter.DeployableTeam = CommanderTeam;
+			RequiredStructuresFilter.DeployableTypes = NextBuildOrderEntry.StructureRequiredOne;
+			RequiredStructuresFilter.IncludeStatusFlags = STRUCTURE_STATUS_COMPLETED;
+			RequiredStructuresFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
 
-			if (bSuccess) { return true; }
+			vector <AvHAIBuildableStructure> FoundStructures = AITAC_FindAllDeployables(ZERO_VECTOR, &RequiredStructuresFilter);
+			conditionOne = FoundStructures.size() == 0 ? false : true;
+		}
+		if (NextBuildOrderEntry.BuildConditionOne == UPGRADE_EXISTS)
+		{
+			conditionOne = (NextBuildOrderEntry.UpgradeRequiredOne == TECH_NULL || !AITAC_ResearchIsComplete(CommanderTeam, NextBuildOrderEntry.UpgradeRequiredOne)) ? false : true;
+		}
+		if (NextBuildOrderEntry.BuildConditionOne == TIME_ELAPSED)
+		{
+			conditionOne = AIMGR_GetMatchLength() < NextBuildOrderEntry.TimeLimitInSecondsOne ? false : true;
+		}
 
-			return pBot->Player->GetResources() < (BALANCE_VAR(kArmorOneResearchCost) * 1.5f);
+		if (NextBuildOrderEntry.BuildConditionTwo == STRUCTURE_EXISTS)
+		{
+			DeployableSearchFilter RequiredStructuresFilter;
+			RequiredStructuresFilter.DeployableTeam = CommanderTeam;
+			RequiredStructuresFilter.DeployableTypes = NextBuildOrderEntry.StructureRequiredTwo;
+			RequiredStructuresFilter.IncludeStatusFlags = STRUCTURE_STATUS_COMPLETED;
+			RequiredStructuresFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
+
+			vector <AvHAIBuildableStructure> FoundStructures = AITAC_FindAllDeployables(ZERO_VECTOR, &RequiredStructuresFilter);
+			conditionTwo = FoundStructures.size() == 0 ? false : true;
+		}
+		if (NextBuildOrderEntry.BuildConditionTwo == UPGRADE_EXISTS)
+		{
+			conditionTwo = (NextBuildOrderEntry.UpgradeRequiredTwo == TECH_NULL || !AITAC_ResearchIsComplete(CommanderTeam, NextBuildOrderEntry.UpgradeRequiredTwo)) ? false : true;
+		}
+		if (NextBuildOrderEntry.BuildConditionTwo == TIME_ELAPSED)
+		{
+
+			conditionTwo = AIMGR_GetMatchLength() < NextBuildOrderEntry.TimeLimitInSecondsTwo ? false : true;
+		}
+
+		if (NextBuildOrderEntry.Connective == AND)
+		{
+			connective = conditionOne && conditionTwo;
+		}
+		if (NextBuildOrderEntry.Connective == OR)
+		{
+			connective = conditionOne || conditionTwo;
+		}
+
+		if (!connective) { continue; }
+		// Done checking the conditions
+
+		if (AITAC_MarineResearchIsAvailable(CommanderTeam,AIBO_MapTechIDToMessageID(NextBuildOrderEntry.UpgradeToResearch)))
+		{
+			StructureFilter.DeployableTypes = AIBO_MapTechToRequiredStructure(NextBuildOrderEntry.UpgradeToResearch);
+			StructureFilter.ExcludeStatusFlags |= STRUCTURE_STATUS_RESEARCHING;
+			AvHAIBuildableStructure NearestStructure = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(CommanderTeam), &StructureFilter);
+			if (NearestStructure.IsValid())
+			{
+				bool bSuccess = AICOMM_ResearchTech(pBot, &NearestStructure, AIBO_MapTechIDToMessageID(NextBuildOrderEntry.UpgradeToResearch));
+				if (bSuccess) { return true; }
+				return pBot->Player->GetResources() < (AIBO_GetResearchCost(NextBuildOrderEntry.UpgradeToResearch) * 1.5f);
+			}
 		}
 	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_WEAPONS_ONE))
-	{
-		if (ArmsLab.IsValid())
-		{
-			bool bSuccess = AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_WEAPONS_ONE);
-
-			if (bSuccess) { return true; }
-
-			return pBot->Player->GetResources() < (BALANCE_VAR(kWeaponsOneResearchCost) * 1.5f);
-		}
-	}
-
-	StructureFilter.DeployableTypes = STRUCTURE_MARINE_OBSERVATORY;
-	StructureFilter.ExcludeStatusFlags |= STRUCTURE_STATUS_RESEARCHING;
-
-	AvHAIBuildableStructure Observatory = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(CommanderTeam), &StructureFilter);
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_PHASETECH))
-	{
-		if (Observatory.IsValid())
-		{
-			bool bSuccess = AICOMM_ResearchTech(pBot, &Observatory, RESEARCH_PHASETECH);
-
-			if (bSuccess) { return true; }
-
-			return pBot->Player->GetResources() < (BALANCE_VAR(kPhaseTechResearchCost) * 1.5f);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_MOTIONTRACK))
-	{
-		if (Observatory.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &Observatory, RESEARCH_MOTIONTRACK);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_ARMOR_TWO))
-	{
-		if (ArmsLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_ARMOR_TWO);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_WEAPONS_TWO))
-	{
-		if (ArmsLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_WEAPONS_TWO);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_CATALYSTS))
-	{
-		if (ArmsLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_CATALYSTS);
-		}
-	}
-
-	StructureFilter.DeployableTypes = STRUCTURE_MARINE_PROTOTYPELAB;
-	StructureFilter.ExcludeStatusFlags |= STRUCTURE_STATUS_RESEARCHING;
-
-	AvHAIBuildableStructure ProtoLab = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(CommanderTeam), &StructureFilter);
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_HEAVYARMOR))
-	{
-		if (ProtoLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ProtoLab, RESEARCH_HEAVYARMOR);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_JETPACKS))
-	{
-		if (ProtoLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ProtoLab, RESEARCH_JETPACKS);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_ARMOR_THREE))
-	{
-		if (ArmsLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_ARMOR_THREE);
-		}
-	}
-
-	if (AITAC_MarineResearchIsAvailable(CommanderTeam, RESEARCH_WEAPONS_THREE))
-	{
-		if (ArmsLab.IsValid())
-		{
-			return AICOMM_ResearchTech(pBot, &ArmsLab, RESEARCH_WEAPONS_THREE);
-		}
-	}
-
 	return false;
 }
 
@@ -4625,7 +4579,7 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 
 	if (!AIBO_CurrentBuildOrder)
 	{
-		g_engfuncs.pfnServerPrint("No current build order set.\n");
+		g_engfuncs.pfnServerPrint("Trying to build the main base but no current build order set.\n");
 		return false;
 	}
 
@@ -4674,7 +4628,7 @@ bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut)
 	for (auto& NextBuildOrderEntry : AIBO_CurrentBuildOrder->BuildOrder)
 	{
 
-		if (NextBuildOrderEntry.BuildOrderType != BUILD_ORDER_STRUCTURE) { continue; } // Maybe we care about Upgrades later
+		if (NextBuildOrderEntry.BuildOrderType != BUILD_ORDER_STRUCTURE) { continue; }
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_NONE) { continue; }
 
 		if (NextBuildOrderEntry.StructureToBuild == STRUCTURE_MARINE_RESTOWER)
