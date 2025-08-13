@@ -590,6 +590,42 @@ void AICOMM_UpdatePlayerOrders(AvHAIPlayer* pBot)
 	
 	int NumPlayersOnTeam = AITAC_GetNumActivePlayersOnTeam(pBot->Player->GetTeam());
 
+	// Do the Shotgun rush here
+	if (AIBO_BuildOrderIsShotgunRush() && AIMGR_GetMatchLength() < 180)
+	{
+		DeployableSearchFilter ArmouryFilter;
+		ArmouryFilter.DeployableTypes = (STRUCTURE_MARINE_ARMOURY | STRUCTURE_MARINE_ADVARMOURY);
+		ArmouryFilter.DeployableTeam = BotTeam;
+		ArmouryFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
+
+		AvHAIBuildableStructure NearestArmoury = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(BotTeam), &ArmouryFilter);
+		Vector CommChairLocation = AITAC_GetCommChairLocation(BotTeam);	
+		const AvHAIHiveDefinition* HiveToAttack = AITAC_GetActiveHiveNearestLocation(EnemyTeam, CommChairLocation);
+
+		// Order all players to stay in base until 80% of them have a shotgun or some time has passed.
+		int NumPlayers = AIMGR_GetNumPlayersOnTeam(BotTeam);
+		int NumShotguns = AITAC_GetNumWeaponsInPlay(BotTeam, WEAPON_MARINE_SHOTGUN);
+
+		if (NumShotguns < 0.8 * NumPlayers && AIMGR_GetMatchLength() < 30)
+		{
+			Vector MoveLocation = (NearestArmoury.IsValid()) ? NearestArmoury.Location : CommChairLocation;
+			edict_t* GuyToBuildBase = AICOMM_GetPlayerWithoutSpecificOrderNearestLocation(pBot, HiveToAttack->Location, ORDERPURPOSE_BUILD_MAINBASE);
+			AICOMM_AssignNewPlayerOrder(pBot, GuyToBuildBase, MoveLocation, ORDERPURPOSE_BUILD_MAINBASE);
+			return;
+		}
+		// Send all players to attack the hive
+		if (HiveToAttack)
+		{
+			edict_t* HiveAttacker = AICOMM_GetPlayerWithoutSpecificOrderNearestLocation(pBot, CommChairLocation, ORDERPURPOSE_SIEGE_HIVE);
+			if (HiveAttacker && !FNullEnt(HiveAttacker))
+			{
+				// AICOMM_AssignNewPlayerOrder(pBot, HiveAttacker, HiveToAttack->Location, ORDERPURPOSE_SIEGE_HIVE); <~~ why does this crash?
+				AICOMM_IssueSecureHiveOrder(pBot, HiveAttacker, HiveToAttack);
+			}
+		}
+		return;
+	}
+
 	for (auto it = pBot->Bases.begin(); it != pBot->Bases.end(); it++)
 	{
 		AvHAIMarineBase* ThisBase = &(*it);
@@ -1435,6 +1471,35 @@ bool AICOMM_CheckForNextBuildAction(AvHAIPlayer* pBot)
 bool AICOMM_CheckForNextSupplyAction(AvHAIPlayer* pBot)
 {
 	AvHTeamNumber CommanderTeam = pBot->Player->GetTeam();
+
+	// Even morer firsterer: Are we doing a shotgun rush? If so, drop a shotgun for everyone who doesn't have one yet
+	if (AIBO_BuildOrderIsShotgunRush() && AIMGR_GetMatchLength() < 120)
+	{
+		// As long as we have enough resources, drop a shotgun for everyone who doesn't have one yet
+		if (pBot->Player->GetResources() >= BALANCE_VAR(kShotgunCost))
+		{
+			int NumPlayers = AIMGR_GetNumPlayersOnTeam(CommanderTeam);
+			int NumShotguns = AITAC_GetNumWeaponsInPlay(CommanderTeam, WEAPON_MARINE_SHOTGUN);
+			if (NumShotguns < NumPlayers)
+			{
+				DeployableSearchFilter ArmouryFilter;
+				ArmouryFilter.DeployableTypes = (STRUCTURE_MARINE_ARMOURY | STRUCTURE_MARINE_ADVARMOURY);
+				ArmouryFilter.DeployableTeam = CommanderTeam;
+				ArmouryFilter.IncludeStatusFlags = STRUCTURE_STATUS_COMPLETED;
+				ArmouryFilter.ExcludeStatusFlags = STRUCTURE_STATUS_RECYCLING;
+
+				AvHAIBuildableStructure NearestArmoury = AITAC_FindClosestDeployableToLocation(AITAC_GetTeamStartingLocation(CommanderTeam), &ArmouryFilter);
+
+				if (NearestArmoury.IsValid())
+				{
+					Vector DeployLocation = UTIL_GetRandomPointOnNavmeshInRadius(GetBaseNavProfile(MARINE_BASE_NAV_PROFILE), NearestArmoury.Location, UTIL_MetresToGoldSrcUnits(3.0f));
+					bool bSuccess = AICOMM_DeployItem(pBot, DEPLOYABLE_ITEM_SHOTGUN, DeployLocation);
+
+					return bSuccess;
+				}
+			}
+		}
+	}
 
 	// First thing: if our base is damaged and there's nobody able to weld, drop a welder so we don't let the base die
 	bool bBaseIsDamaged = false;
@@ -4295,6 +4360,7 @@ void AICOMM_ReceiveChatRequest(AvHAIPlayer* Commander, edict_t* Requestor, const
 bool AICOMM_ShouldCommanderRelocate(AvHAIPlayer* pBot)
 {
 	if (!CONFIG_IsRelocationAllowed()) { return false; }
+	if (!AIBO_BuildOrderIsShotgunRush()) { return false; }
 
 	AvHTeamNumber Team = pBot->Player->GetTeam();
 	AvHTeamNumber EnemyTeam = AIMGR_GetEnemyTeam(Team);

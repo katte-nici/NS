@@ -61,6 +61,8 @@ void AIBO_LoadHardCodedMarineBuildOrder();
 void AIBO_ParseMarineBuildOrder();
 void AIBO_ResetMarineBuildOrder();
 void AIBO_SelectBuildOrderRandomly();
+std::string GetBuildOrderMessage();
+bool AIBO_BuildOrderIsShotgunRush();
 int AIBO_IntRandomRange(int MinValue, int MaxValue);
 float AIBO_FloatRandomRange(float MinValue, float MaxValue);
 AvHAIDeployableStructureType AIBO_MapStringToStructure(const std::string& StructureName);
@@ -70,6 +72,5 @@ AvHAIBuildOrderType AIBO_MapStringToBuildOrderType(const std::string& BuildOrder
 AvHMessageID AIBO_MapTechIDToMessageID(AvHTechID TechID);
 int AIBO_GetResearchCost(AvHTechID TechID);
 AvHTechID AIBO_MapStringToTech(const std::string& TechName);
-std::string GetBuildOrderMessage();
 
 #endif

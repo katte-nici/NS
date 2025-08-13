@@ -76,7 +76,7 @@ AvHAIDeployableStructureType AIBO_MapTechToRequiredStructure(AvHTechID TechID)
         //case TECH_RESEARCH_HEALTH: return STRUCTURE_MARINE_ARMOURY;
         case TECH_RESEARCH_MOTIONTRACK: return STRUCTURE_MARINE_OBSERVATORY;
         case TECH_RESEARCH_PHASETECH: return STRUCTURE_MARINE_OBSERVATORY;
-        case TECH_RESEARCH_CATALYSTS: return STRUCTURE_MARINE_ARMOURY;
+        case TECH_RESEARCH_CATALYSTS: return STRUCTURE_MARINE_ARMSLAB;
         case TECH_RESEARCH_GRENADES: return STRUCTURE_MARINE_ARMOURY;
         default: return STRUCTURE_NONE; // No structure required for this tech
     }
@@ -375,4 +375,9 @@ std::string GetBuildOrderMessage() {
         return msg;
     }
     return tmpl;
+}
+
+bool AIBO_BuildOrderIsShotgunRush() {
+    if (!AIBO_CurrentBuildOrder) return false;
+    return !stricmp(AIBO_CurrentBuildOrder->BuildOrderName.c_str(), "Shotgun Rush");
 }

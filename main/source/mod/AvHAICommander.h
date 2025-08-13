@@ -35,6 +35,7 @@ bool AICOMM_IsOrderStillValid(AvHAIPlayer* pBot, ai_commander_order* Order);
 void AICOMM_UpdatePlayerOrders(AvHAIPlayer* pBot);
 edict_t* AICOMM_GetPlayerWithNoOrderNearestLocation(AvHAIPlayer* pBot, Vector SearchLocation);
 edict_t* AICOMM_GetPlayerWithoutSpecificOrderNearestLocation(AvHAIPlayer* pBot, Vector SearchLocation, AvHAIOrderPurpose OrderPurpose);
+edict_t* AICOMM_GetPlayerWithAnyOrderNearestLocation(AvHAIPlayer* pBot, Vector SearchLocation);
 bool AICOMM_DoesPlayerOrderNeedReminder(AvHAIPlayer* pBot, ai_commander_order* Order);
 void AICOMM_IssueOrderForAssignedJob(AvHAIPlayer* pBot, ai_commander_order* Order);
 
