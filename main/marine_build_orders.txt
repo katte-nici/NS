@@ -13,6 +13,14 @@
 # Possible Structure names: InfantryPortal, Armoury, TurretFactory, Turrets, ResourceTower, Armslab, Observatory, Phasegate, AdvancedArmoury, Protolab
 # Possible Upgrade names: Grenades,ArmorOne, WeaponsOne, PhaseTech, MotionTracking, ArmorTwo, WeaponsTwo, Catalysts, HeavyArmor, Jetpacks, ArmorThree, WeaponsThree
 
+# Entry syntax: entry=["Structure"/"Upgrade"],[[structure name]/[upgrade name]],[["StructureExists"]/["UpgradeExists"]/["TimeElapsed"]],[[structure name]/[upgrade name][number]],["and"/"or"],[["StructureExists"]/["UpgradeExists"]/["TimeElapsed"]],[[structure name]/[upgrade name][number]]
+
+# Example: entry=structure,Armslab,StructureExists,Armoury,and,TimeElapsed,60
+# Meaning: Try to build an armslab if an armoury exists and the current game is going on for at least 60 seconds.
+
+# A build order does not change the Bot Commander's ability to build things it can not usually build.
+# All the usual rules and requirements still apply.
+
 
 BuildOrderStart
 name=Balanced
@@ -76,7 +84,7 @@ entry=structure,Armoury,none,none,and,none,none
 entry=structure,Observatory,none,none,and,none,none
 entry=structure,Phasegate,none,none,and,none,none
 entry=structure,ResourceTower,none,none,and,none,none
-entry=structure,InfantryPortal,StructureExists,Phasegate,or,TimeElapsed,120
+entry=structure,InfantryPortal,StructureExists,Phasegate,or,TimeElapsed,100
 entry=structure,Armslab,UpgradeExists,PhaseTech,and,none,none
 entry=structure,AdvancedArmoury,UpgradeExists,ArmorOne,and,UpgradeExists,WeaponsTwo
 entry=structure,Protolab,UpgradeExists,ArmorTwo,and,UpgradeExists,WeaponsTwo
@@ -89,7 +97,7 @@ entry=upgrade,ArmorTwo,UpgradeExists,WeaponsTwo,and,none,none
 entry=upgrade,WeaponsTwo,UpgradeExists,WeaponsOne,and,none,none
 entry=upgrade,Catalysts,UpgradeExists,WeaponsTwo,and,none,none
 entry=upgrade,HeavyArmor,UpgradeExists,WeaponsTwo,and,none,none
-entry=upgrade,Jetpacks,UpgradeExists,WeaponsTwo,and,none,none
+entry=upgrade,Jetpacks,UpgradeExists,HeavyArmor,and,none,none
 entry=upgrade,ArmorThree,UpgradeExists,WeaponsThree,and,none,none
 entry=upgrade,WeaponsThree,UpgradeExists,HeavyArmor,and,none,none
 BuildOrderEnd
@@ -117,7 +125,7 @@ entry=upgrade,ArmorTwo,none,none,and,none,none
 entry=upgrade,WeaponsTwo,none,none,and,none,none
 entry=upgrade,Catalysts,none,none,and,none,none
 entry=upgrade,HeavyArmor,none,none,and,none,none
-entry=upgrade,Jetpacks,none,none,and,none,none
+entry=upgrade,Jetpacks,UpgradeExists,HeavyArmor,and,none,none
 entry=upgrade,ArmorThree,none,none,and,none,none
 entry=upgrade,WeaponsThree,none,none,and,none,none
 BuildOrderEnd
@@ -143,7 +151,7 @@ entry=upgrade,ArmorTwo,none,none,and,none,none
 entry=upgrade,WeaponsTwo,none,none,and,none,none
 entry=upgrade,Catalysts,none,none,and,none,none
 entry=upgrade,HeavyArmor,none,none,and,none,none
-entry=upgrade,Jetpacks,none,none,and,none,none
+entry=upgrade,Jetpacks,UpgradeExists,HeavyArmor,and,none,none
 entry=upgrade,ArmorThree,none,none,and,none,none
 entry=upgrade,WeaponsThree,none,none,and,none,none
 BuildOrderEnd
@@ -171,7 +179,7 @@ entry=upgrade,ArmorTwo,none,none,and,none,none
 entry=upgrade,WeaponsTwo,none,none,and,none,none
 entry=upgrade,Catalysts,UpgradeExists,ArmorTwo,or,UpgradeExists,WeaponsTwo
 entry=upgrade,HeavyArmor,UpgradeExists,ArmorThree,or,UpgradeExists,WeaponsThree
-entry=upgrade,Jetpacks,UpgradeExists,ArmorThree,or,UpgradeExists,ArmorThree
+entry=upgrade,Jetpacks,UpgradeExists,ArmorThree,or,UpgradeExists,WeaponsThree
 entry=upgrade,ArmorThree,none,none,and,none,none
 entry=upgrade,WeaponsThree,none,none,and,none,none
 BuildOrderEnd

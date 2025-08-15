@@ -30,16 +30,16 @@ typedef enum
 
 typedef struct _BUILD_ORDER_ENTRY
 {
-	AvHAIBuildOrderType          BuildOrderType;
-	AvHAIDeployableStructureType StructureToBuild;
-	AvHTechID                    UpgradeToResearch;
-	AvHAIBuildCondition          BuildConditionOne;
-	AvHAIDeployableStructureType StructureRequiredOne;
-	AvHTechID                    UpgradeRequiredOne;
-	AvHAILogicConnective         Connective;
-	AvHAIBuildCondition          BuildConditionTwo;
-	AvHAIDeployableStructureType StructureRequiredTwo;
-	AvHTechID                    UpgradeRequiredTwo;
+	AvHAIBuildOrderType          BuildOrderType = BUILD_ORDER_NONE;
+	AvHAIDeployableStructureType StructureToBuild = STRUCTURE_NONE;
+	AvHTechID                    UpgradeToResearch = TECH_NULL;
+	AvHAIBuildCondition          BuildConditionOne = CONDITION_NONE;
+	AvHAIDeployableStructureType StructureRequiredOne = STRUCTURE_NONE;
+	AvHTechID                    UpgradeRequiredOne = TECH_NULL;
+	AvHAILogicConnective         Connective = AND;
+	AvHAIBuildCondition          BuildConditionTwo = CONDITION_NONE;
+	AvHAIDeployableStructureType StructureRequiredTwo = STRUCTURE_NONE;
+	AvHTechID                    UpgradeRequiredTwo = TECH_NULL;
 	int TimeLimitInSecondsOne = 0;
 	int TimeLimitInSecondsTwo = 0;
 } Build_order_entry;

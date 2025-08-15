@@ -73,7 +73,6 @@ AvHAIDeployableStructureType AIBO_MapTechToRequiredStructure(AvHTechID TechID)
         case TECH_RESEARCH_JETPACKS: return STRUCTURE_MARINE_PROTOTYPELAB;
         case TECH_RESEARCH_HEAVYARMOR: return STRUCTURE_MARINE_PROTOTYPELAB;
         case TECH_RESEARCH_DISTRESSBEACON: return STRUCTURE_MARINE_OBSERVATORY;
-        //case TECH_RESEARCH_HEALTH: return STRUCTURE_MARINE_ARMOURY;
         case TECH_RESEARCH_MOTIONTRACK: return STRUCTURE_MARINE_OBSERVATORY;
         case TECH_RESEARCH_PHASETECH: return STRUCTURE_MARINE_OBSERVATORY;
         case TECH_RESEARCH_CATALYSTS: return STRUCTURE_MARINE_ARMSLAB;
@@ -187,23 +186,37 @@ int AIBO_GetResearchCost(AvHTechID TechID)
 
 void AIBO_LoadHardCodedMarineBuildOrder()
 {
-    Marine_build_order defaultOrder;
-    defaultOrder.BuildOrder = {
-        //{STRUCTURE_MARINE_INFANTRYPORTAL, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_ARMOURY, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_TURRETFACTORY, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_TURRET, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_RESTOWER, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_ARMSLAB, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_OBSERVATORY, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_PHASEGATE, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_ADVARMOURY, STRUCTURE_MARINE_COMMCHAIR},
-        //{STRUCTURE_MARINE_PROTOTYPELAB, STRUCTURE_MARINE_COMMCHAIR},
-    };
-    defaultOrder.BuildOrderName = "Default Hard-Coded Build-Order";
-    defaultOrder.Weight = 1.0f;
-    AIBO_MarineBuildOrders.push_back(defaultOrder);
-	AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders[0]; // Set the current build order to the default one
+	Marine_build_order defaultBuildOrder;
+    std::vector<Build_order_entry> entries;
+    // Add each entry using push_back instead of initializer list
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_ARMOURY, TECH_NULL, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_TURRETFACTORY, TECH_NULL, TIME_ELAPSED, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, 180, 0});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_TURRET, TECH_NULL, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_RESTOWER, TECH_NULL, STRUCTURE_EXISTS, STRUCTURE_MARINE_ARMOURY, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_INFANTRYPORTAL, TECH_NULL, TIME_ELAPSED, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, 180, 0 });
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_ARMSLAB, TECH_NULL, STRUCTURE_EXISTS, STRUCTURE_MARINE_TURRETFACTORY, TECH_NULL, OR, TIME_ELAPSED, STRUCTURE_NONE, TECH_NULL, 200, 0});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_OBSERVATORY, TECH_NULL, STRUCTURE_EXISTS, STRUCTURE_MARINE_ARMSLAB});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_PHASEGATE, TECH_NULL, STRUCTURE_EXISTS, STRUCTURE_MARINE_OBSERVATORY});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_ADVARMOURY, TECH_NULL, STRUCTURE_EXISTS, STRUCTURE_MARINE_PHASEGATE});
+    entries.push_back(Build_order_entry{BUILD_ORDER_STRUCTURE, STRUCTURE_MARINE_PROTOTYPELAB, TECH_NULL, STRUCTURE_EXISTS ,STRUCTURE_MARINE_ADVARMOURY });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_GRENADES ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_ARMOR_ONE ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_WEAPONS_ONE ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_PHASETECH ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_MOTIONTRACK ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_ARMOR_TWO ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE ,STRUCTURE_NONE ,TECH_RESEARCH_WEAPONS_TWO ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL ,AND ,CONDITION_NONE ,STRUCTURE_NONE ,TECH_NULL });
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE, STRUCTURE_NONE, TECH_RESEARCH_CATALYSTS, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE, STRUCTURE_NONE, TECH_RESEARCH_HEAVYARMOR, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE, STRUCTURE_NONE, TECH_RESEARCH_JETPACKS, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE, STRUCTURE_NONE, TECH_RESEARCH_ARMOR_THREE, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+    entries.push_back(Build_order_entry{BUILD_ORDER_UPGRADE, STRUCTURE_NONE, TECH_RESEARCH_WEAPONS_THREE, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL, AND, CONDITION_NONE, STRUCTURE_NONE, TECH_NULL});
+
+    defaultBuildOrder.BuildOrder = entries;
+    defaultBuildOrder.BuildOrderName = "Default Build-Order";
+    defaultBuildOrder.Weight = 1.0f;
+    AIBO_MarineBuildOrders.push_back(defaultBuildOrder);
+    AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders[0]; // Set the current build order to the default one
 }
 
 void AIBO_ParseMarineBuildOrder()
@@ -217,8 +230,6 @@ void AIBO_ParseMarineBuildOrder()
     if (!BuildOrderFile.is_open())
     {
 		g_engfuncs.pfnServerPrint("Failed to open marine build order file. Using default.\n");
-
-		// Create a default build order
 		AIBO_LoadHardCodedMarineBuildOrder();
         return;
     }
@@ -324,7 +335,7 @@ void AIBO_ParseMarineBuildOrder()
 
 
 void AIBO_ResetMarineBuildOrder() {
-	BuildMessageAnnouncementCountdown = 3; // Reset announcement countdown
+	BuildMessageAnnouncementCountdown = 3;
 }
 
 void AIBO_SelectBuildOrderRandomly() {
@@ -360,9 +371,8 @@ void AIBO_SelectBuildOrderRandomly() {
         AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders.back();
     }
 
-    // AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders[AIBO_IntRandomRange(0, AIBO_MarineBuildOrders.size() - 1)];
     BuildMessageAnnouncementCountdown = 3;
-	BuildMessageAnnouncementIndex = rand() % BuildOrderMessageTemplates.size(); // Reset the announcement index
+	BuildMessageAnnouncementIndex = rand() % BuildOrderMessageTemplates.size();
 }
 
 std::string GetBuildOrderMessage() {
