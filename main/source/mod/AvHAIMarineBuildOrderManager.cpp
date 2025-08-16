@@ -4,7 +4,7 @@
 
 std::vector<Marine_build_order> AIBO_MarineBuildOrders;
 Marine_build_order* AIBO_CurrentBuildOrder = nullptr;
-int BuildMessageAnnouncementCountdown = 3;
+bool BuildMessageAnnounced = false;
 
 bool bo_rng_initialized = false;
 int BuildMessageAnnouncementIndex = 0;
@@ -221,7 +221,7 @@ void AIBO_LoadHardCodedMarineBuildOrder()
 
 void AIBO_ParseMarineBuildOrder()
 {
-    BuildMessageAnnouncementCountdown = 3;
+    BuildMessageAnnounced = false;
     AIBO_MarineBuildOrders.clear();
 
     std::string BuildOrderFileString = std::string(getModDirectory()) + "/marine_build_orders.txt";
@@ -335,7 +335,7 @@ void AIBO_ParseMarineBuildOrder()
 
 
 void AIBO_ResetMarineBuildOrder() {
-	BuildMessageAnnouncementCountdown = 3;
+    BuildMessageAnnounced = false;
 }
 
 void AIBO_SelectBuildOrderRandomly() {
@@ -371,8 +371,8 @@ void AIBO_SelectBuildOrderRandomly() {
         AIBO_CurrentBuildOrder = &AIBO_MarineBuildOrders.back();
     }
 
-    BuildMessageAnnouncementCountdown = 3;
 	BuildMessageAnnouncementIndex = rand() % BuildOrderMessageTemplates.size();
+    BuildMessageAnnounced = false;
 }
 
 std::string GetBuildOrderMessage() {

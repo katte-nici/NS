@@ -944,6 +944,7 @@ void AIMGR_ResetRound()
 	CountdownStartedTime = 0.0f;
 
 	AITAC_DetermineRelocationEnabled();
+	AIBO_SelectBuildOrderRandomly();
 }
 
 void AIMGR_ReloadNavigationData()

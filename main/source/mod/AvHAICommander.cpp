@@ -3294,9 +3294,9 @@ void AICOMM_CommanderThink(AvHAIPlayer* pBot)
 		}
 	}
 
-	if (BuildMessageAnnouncementCountdown > 0)
+	if (!BuildMessageAnnounced)
 	{
-		BuildMessageAnnouncementCountdown--;
+		BuildMessageAnnounced = true;
 		if (AIBO_CurrentBuildOrder)
 		{
 			std::string BuildOrderMessage = GetBuildOrderMessage();

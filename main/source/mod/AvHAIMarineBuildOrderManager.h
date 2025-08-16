@@ -54,7 +54,7 @@ typedef struct _MARINE_BUILD_ORDER {
 extern std::vector<Marine_build_order> AIBO_MarineBuildOrders;
 extern Marine_build_order* AIBO_CurrentBuildOrder;
 extern vector<std::string> BuildOrderMessages;
-extern int BuildMessageAnnouncementCountdown;
+extern bool BuildMessageAnnounced;
 extern int BuildMessageAnnouncementIndex;
 
 void AIBO_LoadHardCodedMarineBuildOrder();
