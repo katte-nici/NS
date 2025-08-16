@@ -249,7 +249,10 @@ _Pvt_Extensions
 /main/source/Playtest/Server/ns.dll
 /main/source/Playtest/Server/ns.exp
 /main/source/Playtest/Server/ns.lib
-/main/source/cl_dll/**
+#/main/source/cl_dll/
+/main/source/cl_dll/Client - Debug/**
+/main/source/cl_dll/Client - Playtest/**
+/main/source/cl_dll/Client - Release/**
 /main/source/detour/Detour - Debug/**
 /main/source/detour/Detour - Release/**
 /main/source/dlls/Playtest/**
@@ -258,5 +261,5 @@ _Pvt_Extensions
 /main/source/dlls/Server - Release/**
 /main/source/particles/particles/Playtest/**
 /main/source/particles/Particles - Debug/**
-/main/source/particles/Particles - Release/**
 /main/source/particles/Particles - Playtest/**
+/main/source/particles/Particles - Release/**
