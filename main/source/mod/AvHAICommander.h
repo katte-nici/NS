@@ -35,7 +35,6 @@ bool AICOMM_IsOrderStillValid(AvHAIPlayer* pBot, ai_commander_order* Order);
 void AICOMM_UpdatePlayerOrders(AvHAIPlayer* pBot);
 edict_t* AICOMM_GetPlayerWithNoOrderNearestLocation(AvHAIPlayer* pBot, Vector SearchLocation);
 edict_t* AICOMM_GetPlayerWithoutSpecificOrderNearestLocation(AvHAIPlayer* pBot, Vector SearchLocation, AvHAIOrderPurpose OrderPurpose);
-edict_t* AICOMM_GetPlayerWithAnyOrderNearestLocation(AvHAIPlayer* pBot, Vector SearchLocation);
 bool AICOMM_DoesPlayerOrderNeedReminder(AvHAIPlayer* pBot, ai_commander_order* Order);
 void AICOMM_IssueOrderForAssignedJob(AvHAIPlayer* pBot, ai_commander_order* Order);
 
@@ -87,7 +86,6 @@ void AICOMM_UpdateMainBaseStatus(AvHAIPlayer* pBot, AvHAIMarineBase* Base);
 
 bool AICOMM_BuildOutBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutMainBase(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
-bool AICOMM_BuildOutMainBaseWithBuildOrder(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutOutpost(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutSiege(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
 bool AICOMM_BuildOutGuardPost(AvHAIPlayer* pBot, AvHAIMarineBase* BaseToBuildOut);
