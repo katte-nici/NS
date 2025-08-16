@@ -242,3 +242,21 @@ _Pvt_Extensions
 !main/source/includes/
 
 
+/main/source/Natural_Selection.sln
+/main/source/Playtest/**
+/main/source/Playtest/Client/client.bsc
+/main/source/Playtest/Client/client.dll
+/main/source/Playtest/Server/ns.dll
+/main/source/Playtest/Server/ns.exp
+/main/source/Playtest/Server/ns.lib
+/main/source/cl_dll/**
+/main/source/detour/Detour - Debug/**
+/main/source/detour/Detour - Release/**
+/main/source/dlls/Playtest/**
+/main/source/dlls/Server - Debug/**
+/main/source/dlls/Server - Playtest/**
+/main/source/dlls/Server - Release/**
+/main/source/particles/particles/Playtest/**
+/main/source/particles/Particles - Debug/**
+/main/source/particles/Particles - Release/**
+/main/source/particles/Particles - Playtest/**
