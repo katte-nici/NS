@@ -249,7 +249,6 @@ _Pvt_Extensions
 /main/source/Playtest/Server/ns.dll
 /main/source/Playtest/Server/ns.exp
 /main/source/Playtest/Server/ns.lib
-#/main/source/cl_dll/
 /main/source/cl_dll/Client - Debug/**
 /main/source/cl_dll/Client - Playtest/**
 /main/source/cl_dll/Client - Release/**
